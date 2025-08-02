@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import ThemeToggle from "../components/ThemeToggle";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
-import Background from "@/components/Background";
+import GrainBackground from "@/components/GrainBackground";
 import MouseParticles from "@/components/MouseParticles";
 import { Navbar } from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -36,7 +36,8 @@ const Home = () => {
       {/* {theme toggle} */}
       <ThemeToggle />
       {/* bg effect */}
-      <ParticlesBackground />
+      {/* <ParticlesBackground /> */}
+      <GrainBackground />
       {/* Mouse particles */}
       <MouseParticles />
       {/* Navbar */}
