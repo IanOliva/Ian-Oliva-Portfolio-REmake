@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import ThemeToggle from "../components/ThemeToggle";
-import { ParticlesBackground } from "@/components/ParticlesBackground";
+import React, { useEffect, useState } from "react";
+import ThemeToggle from "@/components/ThemeToggle";
+import IntroScreen from "@/components/IntroScreen";
 import GrainBackground from "@/components/GrainBackground";
 import MouseParticles from "@/components/MouseParticles";
 import { Navbar } from "@/components/Navbar";
@@ -11,6 +11,11 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 const Home = () => {
+  const [showIntro, setShowIntro] = useState(true);
+  const handleContinue = () => {
+    setShowIntro(false);
+  };
+
   useEffect(() => {
     const soundtrack = new Audio("/sounds/soundtrack.mp3");
     soundtrack.volume = 0.1;
@@ -33,24 +38,29 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative transition-colors duration-1000">
-      {/* {theme toggle} */}
-      <ThemeToggle />
-      {/* bg effect */}
-      {/* <ParticlesBackground /> */}
-      <GrainBackground />
-      {/* Mouse particles */}
-      <MouseParticles />
-      {/* Navbar */}
-      <Navbar />
-      {/* Hero section */}
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <ProjectsSection />
-        <ContactSection />
-      </main>
-      {/* Footer */}
-      <Footer />
+      {showIntro && <IntroScreen onContinue={handleContinue} />}
+
+      {!showIntro && (
+        <>
+          {/* {theme toggle} */}
+          <ThemeToggle />
+          {/* bg effect */}
+          <GrainBackground />
+          {/* Mouse particles */}
+          <MouseParticles />
+          {/* Navbar */}
+          <Navbar />
+          {/* Hero section */}
+          <main>
+            <HeroSection />
+            <AboutSection />
+            <ProjectsSection />
+            <ContactSection />
+          </main>
+          {/* Footer */}
+          <Footer />
+        </>
+      )}
     </div>
   );
 };
