@@ -15,7 +15,7 @@ const ProjectsSection = () => {
 
         <ProjectsCarousel />
 
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <a
             className="cosmic-button w-fit flex items-center mx-auto gap-2"
             target="_blank"
@@ -23,7 +23,7 @@ const ProjectsSection = () => {
           >
             Check My Github <ArrowRight size={16} />
           </a>
-        </div>
+        </div> */}
       </div>
     </section>
   );

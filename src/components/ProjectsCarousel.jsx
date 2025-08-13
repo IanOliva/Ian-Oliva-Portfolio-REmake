@@ -4,7 +4,6 @@ import "@splidejs/react-splide/css"; // o puedes usar `/css/skyblue`, `/css/sea-
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import Tilt from "react-parallax-tilt";
 
-
 const ProjectsCarousel = () => {
   const splideRef = useRef(null);
   const projects = [
@@ -86,86 +85,83 @@ const ProjectsCarousel = () => {
       {/* Carrusel Splide */}
       <div className="w-full overflow-hidden h-100 p-4">
         <Splide
-        ref={splideRef}
-        options={{
-          type: "loop",
-          arrows: false,
-          perPage: 3,
-          perMove: 1,
-          gap: "1rem",
-          autoplay: true,
-          pauseOnHover: true,
-          pagination: false,
-          breakpoints: {
-            1024: {
-              perPage: 2,
+          ref={splideRef}
+          options={{
+            type: "loop",
+            arrows: false,
+            perPage: 3,
+            perMove: 1,
+            gap: "1rem",
+            autoplay: true,
+            pauseOnHover: true,
+            pagination: false,
+            breakpoints: {
+              1024: {
+                perPage: 2,
+              },
+              640: {
+                perPage: 1,
+              },
             },
-            640: {
-              perPage: 1,
-            },
-          },
-        }}
-        aria-label="Proyectos personales"
-        className="px-4"
-      >
-        {projects.map((project) => (
-          <SplideSlide key={project.id}>
-            <Tilt
-              glareEnable={true}
-              glareMaxOpacity={0.2}
-              glareColor="#ffffff"
-              glarePosition="all"
-              scale={1.03}
-              tiltMaxAngleX={10}
-              tiltMaxAngleY={10}
-              className="w-full h-full z-50"
-            >
-              <div className="relative overflow-visible z-10 rounded-xl bg-zinc-900/50 backdrop-blur-sm border border-zinc-700 shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col hover:scale-[1.02]">
-                <div className="h-40 w-full overflow-hidden">
-                  <img
-                    src={project.img}
-                    alt={project.alt}
-                    className="w-full h-full rounded object-cover transition-transform duration-500 group-hover:scale-105 grayscale hover:filter-none"
-                  />
-                </div>
+          }}
+          aria-label="Proyectos personales"
+          className="px-4"
+        >
+          {projects.map((project) => (
+            <SplideSlide key={project.id}>
+              <Tilt
+                glareEnable={true}
+                glareMaxOpacity={0.2}
+                glareColor="#ffffff"
+                glarePosition="all"
+                scale={1.03}
+                tiltMaxAngleX={10}
+                tiltMaxAngleY={10}
+                className="w-full h-full z-50"
+              >
+                <div className="relative overflow-visible z-10 rounded-xl bg-zinc-900/50 backdrop-blur-sm border border-zinc-700 shadow-lg hover:shadow-2xl transition-all duration-500 h-full flex flex-col hover:scale-[1.02]">
+                  <div className="h-40 w-full overflow-hidden">
+                    <img
+                      src={project.img}
+                      alt={project.alt}
+                      className="w-full h-full rounded object-cover transition-transform duration-500 group-hover:scale-105 grayscale hover:filter-none"
+                    />
+                  </div>
 
-                <div className="p-5 flex flex-col flex-grow text-white">
-                  <h3 className="text-xl font-bold mb-1">{project.title}</h3>
-                  <p className="text-sm text-zinc-300 mb-3">
-                    {project.description}
-                  </p>
+                  <div className="p-5 flex flex-col flex-grow text-white">
+                    <h3 className="text-xl font-bold mb-1">{project.title}</h3>
+                    <p className="text-sm text-zinc-300 mb-3">
+                      {project.description}
+                    </p>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-0.5 text-xs font-semibold rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white shadow-md"
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-0.5 text-xs font-semibold rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white shadow-md"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-auto flex justify-end">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm text-cyan-400 hover:underline"
                       >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="mt-auto flex justify-end">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm text-cyan-400 hover:underline"
-                    >
-                      Ver proyecto <ExternalLink size={16} />
-                    </a>
+                        Ver proyecto <ExternalLink size={16} />
+                      </a>
+                    </div>
                   </div>
                 </div>
-
-                
-              </div>
-            </Tilt>
-          </SplideSlide>
-        ))}
-      </Splide>
+              </Tilt>
+            </SplideSlide>
+          ))}
+        </Splide>
       </div>
-      
 
       {/* Flecha derecha */}
       <button
