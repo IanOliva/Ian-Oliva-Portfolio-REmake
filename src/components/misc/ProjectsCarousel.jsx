@@ -70,6 +70,15 @@ const ProjectsCarousel = () => {
       technologies: ["Node.js", "Express", "MySQL", "Sequelize", "Tailwind"],
       link: "#",
     },
+    {
+      id: 8,
+      img: "projects/fakegram.png",
+      alt: "fakegram",
+      title: "Fakegram",
+      description: "Clon de instagram",
+      technologies: ["React", "Tailwind", "MongoDB"],
+      link: "#",
+    },
   ];
 
   return (

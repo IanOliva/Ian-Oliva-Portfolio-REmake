@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import ThemeToggle from "@/components/ThemeToggle";
-import IntroScreen from "@/components/IntroScreen";
+import ThemeToggle from "@/components/misc/ThemeToggle";
+import IntroScreen from "@/components/sections/IntroScreen";
 import GrainBackground from "@/components/GrainBackground";
 import MouseParticles from "@/components/MouseParticles";
 import { Navbar } from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
+import HeroSection from "@/components/sections/HeroSection";
+import AboutSection from "@/components/sections/AboutSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
+import ContactSection from "@/components/sections/ContactSection";
+import Footer from "@/components/sections/Footer";
 
 const Home = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -51,14 +51,18 @@ const Home = () => {
           {/* Navbar */}
           <Navbar />
           {/* Hero section */}
-          <main>
+          <main className="md:ml-64 p-5">
             <HeroSection />
+
             <AboutSection />
+
             <ProjectsSection />
+
             <ContactSection />
+
+            {/* Footer */}
+            <Footer />
           </main>
-          {/* Footer */}
-          <Footer />
         </>
       )}
     </div>

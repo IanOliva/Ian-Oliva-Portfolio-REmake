@@ -3,7 +3,7 @@ import React from "react";
 const IntroScreen = ({ onContinue }) => {
   return (
     <div className="fixed inset-0 z-[999] bg-black text-white flex flex-col items-center justify-center">
-      <h1 className="text-6xl md:text-8xl font-resident tracking-wide text-center">
+      <h1 className="text-6xl md:text-8xl font-resident tracking-wide text-center animate-horror">
         Bienvenido
       </h1>
       <p className="text-m text-zinc-400 text-center max-w-md font-typewriter">
