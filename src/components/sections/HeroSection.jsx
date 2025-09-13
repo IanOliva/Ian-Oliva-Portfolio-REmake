@@ -1,7 +1,7 @@
 import React from "react";
 import { ChevronDown } from "lucide-react";
 import TypewriterStrings from "@/components/misc/Typewriter";
-import { Section } from "@/components/section";
+import { Section } from "@/components/Section";
 
 const HeroSection = () => {
   return (

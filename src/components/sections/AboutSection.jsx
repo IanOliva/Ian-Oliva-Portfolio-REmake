@@ -13,7 +13,7 @@ import {
 } from "react-icons/fa";
 import { SiMysql, SiMongodb, SiExpress } from "react-icons/si";
 import { RiTailwindCssFill } from "react-icons/ri";
-import { Section } from "@/components/section";
+import { Section } from "@/components/Section";
 
 const AboutMe = () => {
   return (
