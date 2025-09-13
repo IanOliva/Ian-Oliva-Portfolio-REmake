@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 import { useState, useRef } from "react";
 import { Spoiler } from "spoiled";
 import emailjs from "@emailjs/browser";
-import { Section } from "../section";
+import { Section } from "@/components/section";
 const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef();

@@ -1,8 +1,7 @@
 import React from "react";
 import { ExternalLink, ArrowRight } from "lucide-react";
 import ProjectsCarousel from "../misc/ProjectsCarousel";
-import { Section } from "../section";
-
+import { Section } from "@/components/section";
 const ProjectsSection = () => {
   return (
     <Section id="projects">
