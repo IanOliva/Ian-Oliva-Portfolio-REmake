@@ -14,8 +14,17 @@ import {
 import { SiMysql, SiMongodb, SiExpress } from "react-icons/si";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { Section } from "@/components/Section";
+import  ReusableTypewriter  from "@/components/misc/ReusableTypewriter";
 
 const AboutMe = () => {
+   
+  const paragraphs = [
+  "Soy un programador que disfruta transformar ideas en proyectos reales. Me gusta crear sitios y aplicaciones que no solo se vean bien, sino que también sean fáciles y agradables de usar.",
+  "A lo largo de mi experiencia he trabajado con tecnologías modernas, buscando siempre que el código sea limpio, rápido y accesible para todos. Me motiva aprender cosas nuevas y aplicar lo que descubro para que cada proyecto sea mejor que el anterior."
+];
+
+          
+
   return (
     <Section id="about">
       <div className="flex items-center justify-between mb-10">
@@ -31,17 +40,10 @@ const AboutMe = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-6 text-left">
           <h3 className="text-2xl font-semibold">Técnico en Programación</h3>
-          <p className="text-muted-foreground">
-            Soy un programador que disfruta transformar ideas en proyectos
-            reales. Me gusta crear sitios y aplicaciones que no solo se vean
-            bien, sino que también sean fáciles y agradables de usar.
-          </p>
-          <p className="text-muted-foreground">
-            A lo largo de mi experiencia he trabajado con tecnologías modernas,
-            buscando siempre que el código sea limpio, rápido y accesible para
-            todos. Me motiva aprender cosas nuevas y aplicar lo que descubro
-            para que cada proyecto sea mejor que el anterior.
-          </p>
+          <div className="text-muted-foreground">
+            <ReusableTypewriter paragraphs={paragraphs} typespeed={30} delayBetween={800} />
+          </div>
+          
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
             <a href="#contact" className="cosmic-button">

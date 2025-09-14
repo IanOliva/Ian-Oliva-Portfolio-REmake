@@ -2,15 +2,18 @@ import React from "react";
 import { ExternalLink, ArrowRight } from "lucide-react";
 import ProjectsCarousel from "../misc/ProjectsCarousel";
 import { Section } from "@/components/Section";
+import ReusableTypewriter from "@/components/misc/ReusableTypewriter";
 const ProjectsSection = () => {
   return (
     <Section id="projects">
         <h2 className="text-4xl md:text-8xl font-resident tracking-wide text-left">
           <span className="text-primary">P</span>rojectos <span className="text-primary">d</span>estacados
         </h2>
-        <p className="text-left text-muted-foreground max-w-2xl text-lg">
-          Aqui estan algunos de mis proyectos destacados:
-        </p>
+        <div className="text-left text-muted-foreground max-w-2xl text-lg">
+          <ReusableTypewriter paragraphs={[
+            "Aqui estan algunos de mis proyectos destacados:",
+          ]} />
+        </div>
 
         <ProjectsCarousel />
 

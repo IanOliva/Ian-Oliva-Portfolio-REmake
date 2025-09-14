@@ -211,7 +211,6 @@
   .link-animated {
     position: relative;
     display: inline-block;
-    font-weight: 600;
   }
 
   .link-animated::before,

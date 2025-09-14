@@ -18,7 +18,7 @@ const Home = () => {
 
   useEffect(() => {
     const soundtrack = new Audio("/sounds/soundtrack.mp3");
-    soundtrack.volume = 0.1;
+    soundtrack.volume = 0.05;
     soundtrack.play();
     const tryPlay = () => {
       soundtrack.play().catch((err) => {

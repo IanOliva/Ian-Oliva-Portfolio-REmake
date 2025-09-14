@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
-import Hud from "./misc/healthHud.jsx"
+import { useState, useEffect } from "react";
+import Hud from "./misc/healthHud.jsx";
 
 const navItems = [
   { name: "Inicio", href: "#hero" },
@@ -13,6 +13,45 @@ const navItems = [
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("#hero");
+
+  // Sonido al click de links
+  useEffect(() => {
+    const linkSound = new Audio("/sounds/inventory.mp3");
+    linkSound.volume = 0.1;
+    const handleLinkClick = () => {
+      linkSound.currentTime = 0;
+      linkSound.play();
+    };
+    document.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", handleLinkClick);
+    });
+    return () => {
+      document.querySelectorAll("a").forEach((link) => {
+        link.removeEventListener("click", handleLinkClick);
+      });
+    };
+  }, []);
+
+  // IntersectionObserver para marcar sección activa
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      { threshold: 0.6 } // 60% visible
+    );
+
+    navItems.forEach((item) => {
+      const section = document.querySelector(item.href);
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
@@ -30,8 +69,8 @@ export const Navbar = () => {
         className={cn(
           "fixed top-0 left-3 h-screen w-64 border border-transparent p-8 rounded-lg bg-background/30 backdrop-blur-sm shadow-lg",
           "flex flex-col justify-center items-center py-10 space-y-10 z-40 font-typewriter",
-          "md:translate-x-0", // siempre visible en desktop
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full" // toggle en mobile
+          "md:translate-x-0",
+          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
         {/* Logo / Nombre */}
@@ -39,8 +78,8 @@ export const Navbar = () => {
           className="text-2xl font-bold text-primary"
           href="#hero"
           onClick={() => {
-            setActiveSection("#hero"),
-            setIsMobileMenuOpen(false)
+            setActiveSection("#hero");
+            setIsMobileMenuOpen(false);
           }}
         >
           <span className="text-glow text-foreground">Ian Oliva</span>
@@ -69,7 +108,7 @@ export const Navbar = () => {
             </a>
           ))}
 
-          <Hud status = "fine"/>
+          <Hud status="fine" />
         </nav>
       </aside>
     </>
