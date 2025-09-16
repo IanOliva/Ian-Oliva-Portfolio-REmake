@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import Hud from "./misc/healthHud.jsx";
+import { Slide } from "react-awesome-reveal";
 
 const navItems = [
   { name: "Inicio", href: "#hero" },
@@ -65,52 +66,57 @@ export const Navbar = () => {
       </button>
 
       {/* Sidebar principal */}
+
+      
       <aside
         className={cn(
           "fixed top-0 left-3 h-screen w-64 border border-transparent p-8 rounded-lg bg-background/30 backdrop-blur-sm shadow-lg",
           "flex flex-col justify-center items-center py-10 space-y-10 z-40 font-typewriter",
-          "md:translate-x-0",
+          "md:translate-x-0 animate-fade-in",
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        {/* Logo / Nombre */}
-        <a
-          className="text-2xl font-bold text-primary"
-          href="#hero"
-          onClick={() => {
-            setActiveSection("#hero");
-            setIsMobileMenuOpen(false);
-          }}
-        >
-          <span className="text-glow text-foreground">Ian Oliva</span>
-          <span className="block text-sm text-primary">Portfolio</span>
-        </a>
+        {/* Overlay CRT Scanlines */}
+      <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(to_bottom,rgba(255,0,0,0.05)_0_2px,transparent_2px_4px)] opacity-20 animate-[scrollLines_6s_linear_infinite]" />
+          {/* Logo / Nombre */}
+          <a
+            className="text-2xl font-bold text-primary"
+            href="#hero"
+            onClick={() => {
+              setActiveSection("#hero");
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            <span className="text-glow text-foreground">Ian Oliva</span>
+            <span className="block text-sm text-primary">Portfolio</span>
+          </a>
 
-        {/* Links de navegación */}
-        <nav className="flex flex-col justify-center items-center gap-4 text-lg">
-          {navItems.map((item, key) => (
-            <a
-              key={key}
-              href={item.href}
-              data-text={item.name}
-              className={cn(
-                "transition-colors duration-300 ",
-                activeSection === item.href
-                  ? "text-primary link-animated"
-                  : "text-foreground/80 hover:text-primary hover:link-animated"
-              )}
-              onClick={() => {
-                setActiveSection(item.href);
-                setIsMobileMenuOpen(false);
-              }}
-            >
-              {item.name}
-            </a>
-          ))}
+          {/* Links de navegación */}
+          <nav className="flex flex-col justify-center items-center gap-4 text-lg">
+            {navItems.map((item, key) => (
+              <a
+                key={key}
+                href={item.href}
+                data-text={item.name}
+                className={cn(
+                  "transition-colors duration-300 ",
+                  activeSection === item.href
+                    ? "text-primary link-animated"
+                    : "text-foreground/80 hover:text-primary hover:link-animated"
+                )}
+                onClick={() => {
+                  setActiveSection(item.href);
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                {item.name}
+              </a>
+            ))}
 
-          <Hud status="fine" />
-        </nav>
+            <Hud/>
+          </nav>
       </aside>
+
     </>
   );
 };

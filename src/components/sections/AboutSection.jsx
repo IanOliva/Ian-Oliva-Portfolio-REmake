@@ -14,19 +14,18 @@ import {
 import { SiMysql, SiMongodb, SiExpress } from "react-icons/si";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { Section } from "@/components/Section";
-import  ReusableTypewriter  from "@/components/misc/ReusableTypewriter";
+import ReusableTypewriter from "@/components/misc/ReusableTypewriter";
 
 const AboutMe = () => {
-   
   const paragraphs = [
-  "Soy un programador que disfruta transformar ideas en proyectos reales. Me gusta crear sitios y aplicaciones que no solo se vean bien, sino que también sean fáciles y agradables de usar.",
-  "A lo largo de mi experiencia he trabajado con tecnologías modernas, buscando siempre que el código sea limpio, rápido y accesible para todos. Me motiva aprender cosas nuevas y aplicar lo que descubro para que cada proyecto sea mejor que el anterior."
-];
-
-          
+    "Soy un programador que disfruta transformar ideas en proyectos reales. Me gusta crear sitios y aplicaciones que no solo se vean bien, sino que también sean fáciles y agradables de usar.",
+    "A lo largo de mi experiencia he trabajado con tecnologías modernas, buscando siempre que el código sea limpio, rápido y accesible para todos. Me motiva aprender cosas nuevas y aplicar lo que descubro para que cada proyecto sea mejor que el anterior.",
+  ];
 
   return (
     <Section id="about">
+      {/* Overlay CRT Scanlines */}
+      <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(to_bottom,rgba(255,0,0,0.05)_0_2px,transparent_2px_4px)] opacity-20 animate-[scrollLines_6s_linear_infinite]" />
       <div className="flex items-center justify-between mb-10">
         <h2 className="text-4xl md:text-8xl font-resident tracking-wide text-left">
           <span className="text-primary">S</span>obre{" "}
@@ -41,73 +40,86 @@ const AboutMe = () => {
         <div className="space-y-6 text-left">
           <h3 className="text-2xl font-semibold">Técnico en Programación</h3>
           <div className="text-muted-foreground">
-            <ReusableTypewriter paragraphs={paragraphs} typespeed={30} delayBetween={800} />
+            <ReusableTypewriter
+              paragraphs={paragraphs}
+              typespeed={30}
+              delayBetween={800}
+            />
           </div>
-          
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-            <a href="#contact" className="cosmic-button">
+            <a href="#contact" className="biohazard-button">
               Contactame
             </a>
             <a
               href="https://docs.google.com/document/d/1nYjp6P7Eiq2jIu5ZYsvs-N0AR6NeOsKLFqLqaFwocdk/edit?usp=sharing"
               target="_blank"
-              className="cosmic-button"
+              className="biohazard-button"
             >
               Ver CV
             </a>
           </div>
         </div>
-        <div className="grid grid-cols-1 gap-6">
-          <div className="gradient-border p-6 card-hover bg-background/30">
-            <div className="flex items-center gap-4">
-              <div className="text-left">
-                <h4 className="text-lg font-bold">Tecnologias</h4>
-                <div className="flex flex-wrap items-center justify-center p-8 gap-2 mt-2">
-                  <FaHtml5 className="text-orange-500 text-4xl sm:text-5xl md:text-6xl" />
-                  <FaCss3Alt className="text-blue-500 text-4xl sm:text-5xl md:text-6xl" />
-                  <FaJs className="text-yellow-300 text-4xl sm:text-5xl md:text-6xl" />
-                  <FaReact className="text-cyan-400 text-4xl sm:text-5xl md:text-6xl" />
-                  <FaNodeJs className="text-green-500 text-4xl sm:text-5xl md:text-6xl" />
-                  <FaPhp className="text-blue-500 text-4xl sm:text-5xl md:text-6xl" />
-                  <SiMysql className="text-blue-300 text-4xl sm:text-5xl md:text-6xl" />
-                  <SiMongodb className="text-green-700 text-4xl sm:text-5xl md:text-6xl" />
-                  <FaLaravel className="text-red-600 text-4xl sm:text-5xl md:text-6xl" />
-                  <FaBootstrap className="text-purple-600 text-4xl sm:text-5xl md:text-6xl" />
-                  <SiExpress className="text-gray-800 text-4xl sm:text-5xl md:text-6xl" />
-                  <RiTailwindCssFill className="text-sky-400 text-4xl sm:text-5xl md:text-6xl" />
-                </div>
-              </div>
-            </div>
+        <div className="relative overflow-hidden rounded-2xl border border-primary/40 bg-gradient-to-b from-background/60 to-background/30 shadow-lg hover:shadow-2xl transition-all duration-500">
+          {/* Encabezado */}
+          <div className="px-6 pt-6 pb-2">
+            <h4 className="text-2xl font-extrabold tracking-wide text-center text-primary">
+              Tecnologías
+            </h4>
           </div>
-          {/* <div className="gradient-border p-6 card-hover bg-background/30">
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <User className="h-6 w-6 text-primary" />
+
+          {/* Grid de iconos */}
+          <div className="grid grid-cols-3 sm:grid-cols-4 gap-6 px-8 py-6">
+            {[
+              { icon: <FaHtml5 className="text-orange-500" />, name: "HTML5" },
+              { icon: <FaCss3Alt className="text-blue-500" />, name: "CSS3" },
+              {
+                icon: <FaJs className="text-yellow-300" />,
+                name: "JavaScript",
+              },
+              { icon: <FaReact className="text-cyan-400" />, name: "React" },
+              {
+                icon: <FaNodeJs className="text-green-500" />,
+                name: "Node.js",
+              },
+              { icon: <FaPhp className="text-indigo-500" />, name: "PHP" },
+              { icon: <SiMysql className="text-blue-400" />, name: "MySQL" },
+              {
+                icon: <SiMongodb className="text-green-600" />,
+                name: "MongoDB",
+              },
+              { icon: <FaLaravel className="text-red-600" />, name: "Laravel" },
+              {
+                icon: <FaBootstrap className="text-purple-600" />,
+                name: "Bootstrap",
+              },
+              {
+                icon: (
+                  <SiExpress className="text-gray-700 dark:text-gray-200" />
+                ),
+                name: "Express.js",
+              },
+              {
+                icon: <RiTailwindCssFill className="text-sky-400" />,
+                name: "Tailwind CSS",
+              },
+            ].map((tech, i) => (
+              <div
+                key={i}
+                className="group relative flex justify-center items-center"
+              >
+                {/* Icono con glow suave */}
+                <div className="text-5xl transition-transform duration-300 hover:scale-110 drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
+                  {tech.icon}
                 </div>
-                <div className="text-left">
-                  <h4 className="text-lg font-semibold">Backend</h4>
-                  <div className="flex items-center gap-2 mt-2">
-                    
-                  </div>
-                </div>
+
+                {/* Tooltip */}
+                <span className="absolute bottom-[-2rem] z-10 opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all duration-300 text-xs bg-black/90 border border-primary/30 text-white px-2 py-1 rounded-md shadow-md">
+                  {tech.name}
+                </span>
               </div>
-            </div>
-            <div className="gradient-border p-6 card-hover bg-background/30">
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Briefcase className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="text-lg font-semibold">
-                    Frameworks, librerias y ORMS
-                  </h4>
-                  <div className="flex items-center gap-2 mt-2">
-                    
-                  </div>
-                </div>
-              </div>
-            </div> */}
+            ))}
+          </div>
         </div>
       </div>
     </Section>

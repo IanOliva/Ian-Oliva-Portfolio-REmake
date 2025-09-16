@@ -43,6 +43,8 @@ const ContactSection = () => {
 
   return (
     <Section id="contact">
+      {/* Overlay CRT Scanlines */}
+      <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(to_bottom,rgba(255,0,0,0.05)_0_2px,transparent_2px_4px)] opacity-20 animate-[scrollLines_6s_linear_infinite]" />
       <h2 className="text-4xl md:text-8xl font-resident tracking-wide text-left">
         <span className="text-primary">C</span>ontacto
       </h2>
@@ -180,7 +182,7 @@ const ContactSection = () => {
               type="submit"
               disabled={isSubmitting}
               className={cn(
-                "cosmic-button w-full flex items-center justify-center gap-2"
+                "biohazard-button w-full flex items-center justify-center gap-2"
               )}
             >
               {isSubmitting ? "Enviando..." : "Enviar"}

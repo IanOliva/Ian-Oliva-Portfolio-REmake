@@ -266,14 +266,32 @@
   }
 }
 
-@layer utilities{
+@layer utilities {
   @keyframes horror-shake {
-    0% { transform: translate(0) rotate(0deg); text-shadow: 2px 2px 5px red, -2px -2px 5px black; }
-    20% { transform: translate(-2px, 2px) rotate(-1deg); text-shadow: -2px 2px 8px red, 2px -2px 5px black; }
-    40% { transform: translate(2px, -2px) rotate(1deg); text-shadow: 3px -2px 6px darkred, -3px 2px 6px black; }
-    60% { transform: translate(-1px, 1px) rotate(1deg); text-shadow: -2px -3px 6px crimson, 2px 3px 6px black; }
-    80% { transform: translate(2px, 2px) rotate(-1deg); text-shadow: 2px 2px 10px red, -2px -2px 6px black; }
-    100% { transform: translate(0) rotate(0deg); text-shadow: 0 0 5px darkred, 0 0 8px black; }
+    0% {
+      transform: translate(0) rotate(0deg);
+      text-shadow: 2px 2px 5px red, -2px -2px 5px black;
+    }
+    20% {
+      transform: translate(-2px, 2px) rotate(-1deg);
+      text-shadow: -2px 2px 8px red, 2px -2px 5px black;
+    }
+    40% {
+      transform: translate(2px, -2px) rotate(1deg);
+      text-shadow: 3px -2px 6px darkred, -3px 2px 6px black;
+    }
+    60% {
+      transform: translate(-1px, 1px) rotate(1deg);
+      text-shadow: -2px -3px 6px crimson, 2px 3px 6px black;
+    }
+    80% {
+      transform: translate(2px, 2px) rotate(-1deg);
+      text-shadow: 2px 2px 10px red, -2px -2px 6px black;
+    }
+    100% {
+      transform: translate(0) rotate(0deg);
+      text-shadow: 0 0 5px darkred, 0 0 8px black;
+    }
   }
 
   .animate-horror {
@@ -318,10 +336,91 @@
   border: 1px solid transparent;
 }
 
-@utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-foreground font-medium 
-         transition-all duration-300 hover:shadow-[0_0_10px_#f5f5f5]
-         hover:scale-105 active:scale-95;
+@utility biohazard-button {
+  @apply px-5 py-3 w-40 text-center 
+         uppercase tracking-widest font-bold
+         text-red-500 bg-black border-2 border-red-700
+         shadow-[0_0_10px_rgba(255,0,0,0.5)]
+         transition-all duration-300
+         relative overflow-hidden;
+
+  border-radius: 0.25rem;
+
+  /* Hover terrorífico */
+  &:hover {
+    @apply text-black bg-red-600 border-red-400;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.9),
+                inset 0 0 10px rgba(0, 0, 0, 0.8);
+    transform: scale(1.05) skewX(-3deg);
+  }
+
+  /* Active (click) */
+  &:active {
+    @apply bg-red-800 text-white;
+    transform: scale(0.95) skewX(0deg);
+  }
+}
+
+/* -------- Efecto glitch -------- */
+.biohazard-button::before,
+.biohazard-button::after {
+  content: attr(data-text); /* Clona el texto */
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.biohazard-button::before {
+  top: 0;
+  color: #0ff; /* glitch cian */
+  clip: rect(0, 0, 0, 0);
+  animation: glitchTop 1s infinite linear alternate-reverse;
+}
+
+.biohazard-button::after {
+  top: 0;
+  color: #f0f; /* glitch magenta */
+  clip: rect(0, 0, 0, 0);
+  animation: glitchBottom 1.2s infinite linear alternate-reverse;
+}
+
+.biohazard-button:hover::before,
+.biohazard-button:hover::after {
+  opacity: 1;
+}
+
+/* Animaciones de glitch */
+@keyframes glitchTop {
+  0%   { clip: rect(0, 9999px, 0, 0); }
+  10%  { clip: rect(10px, 9999px, 40px, 0); transform: translate(-2px, -2px); }
+  30%  { clip: rect(20px, 9999px, 30px, 0); transform: translate(2px, -1px); }
+  50%  { clip: rect(5px, 9999px, 20px, 0); transform: translate(-1px, 2px); }
+  70%  { clip: rect(15px, 9999px, 25px, 0); transform: translate(1px, -1px); }
+  100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+}
+
+@keyframes glitchBottom {
+  0%   { clip: rect(0, 9999px, 0, 0); }
+  15%  { clip: rect(30px, 9999px, 60px, 0); transform: translate(2px, 2px); }
+  35%  { clip: rect(40px, 9999px, 80px, 0); transform: translate(-2px, 1px); }
+  55%  { clip: rect(25px, 9999px, 70px, 0); transform: translate(1px, -2px); }
+  75%  { clip: rect(35px, 9999px, 65px, 0); transform: translate(-1px, 1px); }
+  100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+}
+
+
+@utility icon-tech {
+  .icon-tech {
+    @apply text-4xl sm:text-5xl md:text-6xl transition-transform duration-300;
+  }
+
+  .icon-tech:hover {
+    @apply scale-110 drop-shadow-lg;
+  }
 }
 
 /* @utility star {
