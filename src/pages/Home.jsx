@@ -42,8 +42,6 @@ const Home = () => {
 
       {!showIntro && (
         <>
-          {/* {theme toggle} */}
-          <ThemeToggle />
           {/* bg effect */}
           <GrainBackground />
           {/* Mouse particles */}

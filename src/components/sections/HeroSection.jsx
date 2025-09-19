@@ -25,7 +25,7 @@ const HeroSection = () => {
         </h3>
 
         {/* Párrafo estilo dossier */}
-        <p className="max-w-2xl text-lg md:text-xl text-muted-foreground mx-auto opacity-0 animate-fade-in-delay-3 leading-relaxed">
+        <p className="max-w-3xl font-mono text-lg md:text-lg text-muted-foreground opacity-0 animate-fade-in-delay-3 ">
           [Archivo clasificado]: Desarrollador especializado en{" "}
           <span className="text-primary">frontend</span> y{" "}
           <span className="text-primary">backend</span>.  
@@ -34,8 +34,8 @@ const HeroSection = () => {
         </p>
 
         {/* Botón */}
-        <div className="pt-4 opacity-0 animate-fade-in-delay-4">
-          <a href="#projects" className="biohazard-button relative">
+        <div className="pt-4 animate-fade-in-delay-4">
+          <a href="#projects" className="fog-button">
             <span className="relative z-10">Ver Proyectos</span>
             
           </a>
@@ -47,13 +47,7 @@ const HeroSection = () => {
         <ChevronDown className="h-12 w-12 text-red-500 drop-shadow-[0_0_10px_rgba(255,0,0,0.6)]" />
       </button>
 
-      <style jsx>{`
-        @keyframes scrollLines {
-          to {
-            background-position-y: 100%;
-          }
-        }
-      `}</style>
+      
     </Section>
   );
 };

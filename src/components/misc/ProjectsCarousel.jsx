@@ -133,13 +133,13 @@ const ProjectsCarousel = () => {
                     <img
                       src={project.img}
                       alt={project.alt}
-                      className="w-full h-full rounded object-cover transition-transform duration-500 group-hover:scale-105 grayscale hover:filter-none"
+                      className="w-full h-full rounded object-cover transition-all duration-500 group-hover:scale-105 grayscale hover:filter-none"
                     />
                   </div>
 
                   <div className="p-5 flex flex-col flex-grow text-white">
-                    <h3 className="text-xl font-bold mb-1">{project.title}</h3>
-                    <p className="text-sm text-zinc-300 mb-3">
+                    <h3 className="text-xl font-typewriter mb-1">{project.title}</h3>
+                    <p className="text-sm text-foreground font-mono mb-3">
                       {project.description}
                     </p>
 
@@ -147,7 +147,7 @@ const ProjectsCarousel = () => {
                       {project.technologies.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-2 py-0.5 text-xs font-semibold rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white shadow-md"
+                          className="px-2 py-0.5 text-xs font-mono rounded-full bg-gradient-to-r from-red-500 via-red-500 text-white shadow-md"
                         >
                           {tech}
                         </span>
@@ -159,7 +159,7 @@ const ProjectsCarousel = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-sm text-cyan-400 hover:underline"
+                        className="inline-flex items-center gap-2 text-lg text-red-500 font-console hover:underline"
                       >
                         Ver proyecto <ExternalLink size={16} />
                       </a>

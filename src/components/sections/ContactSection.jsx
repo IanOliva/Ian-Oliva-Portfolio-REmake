@@ -49,7 +49,7 @@ const ContactSection = () => {
         <span className="text-primary">C</span>ontacto
       </h2>
 
-      <div className="text-left text-muted-foreground mb-6 max-w-2xl text-lg">
+      <div className="text-left text-muted-foreground mb-6 max-w-2xl text-lg font-mono">
         <ReusableTypewriter
           paragraphs={[
             `¿Tenes algun proyecto en mente o quieres colaborar? No dudes en
@@ -61,11 +61,11 @@ const ContactSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Columna izquierda */}
         <div className="">
-          <h3 className="text-2xl font-semibold mb-6">
+          <h3 className="text-2xl font-mono mb-6">
             Información de Contacto
           </h3>
 
-          <div className="space-y-4 justify-center">
+          <div className="space-y-4 justify-center font-mono">
             <div className="flex items-start space-x-4">
               <div className="p-3 rounded-full bg-primary/10">
                 <Mail className="h-6 w-6 text-primary" />
@@ -100,7 +100,7 @@ const ContactSection = () => {
           </div>
 
           <div className="pt-8">
-            <h4 className="font-medium mb- text-2xl">Conecta conmigo</h4>
+            <h4 className="font-mono mb-2 text-2xl">Conecta conmigo</h4>
             <div className="flex space-x-4 justify-center">
               <a
                 href="https://www.linkedin.com/in/ian-oliva-dev"
@@ -131,11 +131,11 @@ const ContactSection = () => {
 
         {/* Columna derecha - Formulario */}
         <div className="bg-card  rounded-lg shadow-xs">
-          <h3 className="text-2xl font-semibold mb-6">Envia un mensaje</h3>
+          <h3 className="text-2xl font-mono mb-6">Envia un mensaje</h3>
 
-          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 font-mono">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-2">
+              <label htmlFor="name" className="block text-sm  mb-2">
                 Tu nombre
               </label>
               <input
@@ -143,13 +143,13 @@ const ContactSection = () => {
                 id="name"
                 name="from_name"
                 required
-                className="w-full px-4 py-2 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
+                className="w-full font-console px-4 py-2 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
                 placeholder="Ian Oliva..."
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
+              <label htmlFor="email" className="block text-sm font-mono mb-2">
                 Tu Email
               </label>
               <input
@@ -157,7 +157,7 @@ const ContactSection = () => {
                 id="email"
                 name="from_email"
                 required
-                className="w-full px-4 py-2 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
+                className="w-full font-console px-4 py-2 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
                 placeholder="john@gmail.com"
               />
             </div>
@@ -165,7 +165,7 @@ const ContactSection = () => {
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm font-medium mb-2"
+                className="block text-sm font-mono mb-2"
               >
                 Tu Mensaje
               </label>
@@ -173,7 +173,7 @@ const ContactSection = () => {
                 id="message"
                 name="message"
                 required
-                className="w-full px-4 py-2 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary resize-none"
+                className="w-full font-console px-4 py-2 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary resize-none"
                 placeholder="Escribe tu mensaje..."
               />
             </div>
@@ -182,7 +182,7 @@ const ContactSection = () => {
               type="submit"
               disabled={isSubmitting}
               className={cn(
-                "biohazard-button w-full flex items-center justify-center gap-2"
+                "fog-button w-full flex items-center justify-center gap-2",
               )}
             >
               {isSubmitting ? "Enviando..." : "Enviar"}

@@ -14,9 +14,17 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "VT323";
+  src: url("assets/VT323-Regular.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
 @theme {
   --font-typewriter: "JMH-Typewriter", monospace;
   --font-resident: "re-font", monospace;
+  --font-console: "VT323", monospace;
   --color-border: var(--border);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -34,9 +42,10 @@
   --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
   --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
   --animate-meteor: meteor 5s linear infinite;
-  --animate-glitch: glitch 0.5s ease-in-out;
+  --animate-glitch: glitch 0.6s steps(2,end);
 
   @keyframes glitch {
+
     0% {
       transform: skew(0deg);
     }
@@ -56,6 +65,7 @@
       transform: skew(0deg);
     }
   }
+
   @keyframes float {
     0%,
     100% {
@@ -84,28 +94,7 @@
       transform: translateY(0);
     }
   }
-  @keyframes meteor {
-    0% {
-      transform: rotate(215deg) translateX(0);
-      opacity: 1;
-    }
-    70% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(215deg) translateX(-500px);
-      opacity: 0;
-    }
-  }
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+ 
 }
 
 @layer base {
@@ -336,81 +325,26 @@
   border: 1px solid transparent;
 }
 
-@utility biohazard-button {
-  @apply px-5 py-3 w-40 text-center 
-         uppercase tracking-widest font-bold
-         text-red-500 bg-black border-2 border-red-700
-         shadow-[0_0_10px_rgba(255,0,0,0.5)]
-         transition-all duration-300
-         relative overflow-hidden;
+@layer utilities {
+  .fog-button {
+    @apply relative px-6 py-3 font-console uppercase text-2xl tracking-wide
+           text-white border border-red-600 rounded-md overflow-hidden 
+           transition-all duration-300 shadow-lg;
 
-  border-radius: 0.25rem;
-
-  /* Hover terrorífico */
-  &:hover {
-    @apply text-black bg-red-600 border-red-400;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.9),
-                inset 0 0 10px rgba(0, 0, 0, 0.8);
-    transform: scale(1.05) skewX(-3deg);
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.15), transparent 100%);
   }
 
-  /* Active (click) */
-  &:active {
-    @apply bg-red-800 text-white;
-    transform: scale(0.95) skewX(0deg);
+
+
+  .fog-button:hover {
+    @apply border-red-500 scale-105;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
   }
 }
 
-/* -------- Efecto glitch -------- */
-.biohazard-button::before,
-.biohazard-button::after {
-  content: attr(data-text); /* Clona el texto */
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-}
 
-.biohazard-button::before {
-  top: 0;
-  color: #0ff; /* glitch cian */
-  clip: rect(0, 0, 0, 0);
-  animation: glitchTop 1s infinite linear alternate-reverse;
-}
 
-.biohazard-button::after {
-  top: 0;
-  color: #f0f; /* glitch magenta */
-  clip: rect(0, 0, 0, 0);
-  animation: glitchBottom 1.2s infinite linear alternate-reverse;
-}
 
-.biohazard-button:hover::before,
-.biohazard-button:hover::after {
-  opacity: 1;
-}
-
-/* Animaciones de glitch */
-@keyframes glitchTop {
-  0%   { clip: rect(0, 9999px, 0, 0); }
-  10%  { clip: rect(10px, 9999px, 40px, 0); transform: translate(-2px, -2px); }
-  30%  { clip: rect(20px, 9999px, 30px, 0); transform: translate(2px, -1px); }
-  50%  { clip: rect(5px, 9999px, 20px, 0); transform: translate(-1px, 2px); }
-  70%  { clip: rect(15px, 9999px, 25px, 0); transform: translate(1px, -1px); }
-  100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
-}
-
-@keyframes glitchBottom {
-  0%   { clip: rect(0, 9999px, 0, 0); }
-  15%  { clip: rect(30px, 9999px, 60px, 0); transform: translate(2px, 2px); }
-  35%  { clip: rect(40px, 9999px, 80px, 0); transform: translate(-2px, 1px); }
-  55%  { clip: rect(25px, 9999px, 70px, 0); transform: translate(1px, -2px); }
-  75%  { clip: rect(35px, 9999px, 65px, 0); transform: translate(-1px, 1px); }
-  100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
-}
 
 
 @utility icon-tech {

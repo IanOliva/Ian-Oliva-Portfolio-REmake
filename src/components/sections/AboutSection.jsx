@@ -38,8 +38,8 @@ const AboutMe = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-6 text-left">
-          <h3 className="text-2xl font-semibold">Técnico en Programación</h3>
-          <div className="text-muted-foreground">
+          <h3 className="text-2xl font-typewriter tracking-wide">Técnico en Programación</h3>
+          <div className="text-muted-foreground font-mono">
             <ReusableTypewriter
               paragraphs={paragraphs}
               typespeed={30}
@@ -48,13 +48,13 @@ const AboutMe = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-            <a href="#contact" className="biohazard-button">
+            <a href="#contact" className="fog-button">
               Contactame
             </a>
             <a
               href="https://docs.google.com/document/d/1nYjp6P7Eiq2jIu5ZYsvs-N0AR6NeOsKLFqLqaFwocdk/edit?usp=sharing"
               target="_blank"
-              className="biohazard-button"
+              className="fog-button"
             >
               Ver CV
             </a>
@@ -63,7 +63,7 @@ const AboutMe = () => {
         <div className="relative overflow-hidden rounded-2xl border border-primary/40 bg-gradient-to-b from-background/60 to-background/30 shadow-lg hover:shadow-2xl transition-all duration-500">
           {/* Encabezado */}
           <div className="px-6 pt-6 pb-2">
-            <h4 className="text-2xl font-extrabold tracking-wide text-center text-primary">
+            <h4 className="text-2xl font-typewriter tracking-wide text-center text-primary">
               Tecnologías
             </h4>
           </div>

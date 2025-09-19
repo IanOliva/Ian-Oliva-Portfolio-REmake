@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import Hud from "./misc/healthHud.jsx";
 import { Slide } from "react-awesome-reveal";
+import ThemeToggle from "./misc/ThemeToggle.jsx";
 
 const navItems = [
   { name: "Inicio", href: "#hero" },
@@ -78,6 +79,9 @@ export const Navbar = () => {
       >
         {/* Overlay CRT Scanlines */}
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(to_bottom,rgba(255,0,0,0.05)_0_2px,transparent_2px_4px)] opacity-20 animate-[scrollLines_6s_linear_infinite]" />
+          {/* {theme toggle} */}
+          <ThemeToggle/>
+          
           {/* Logo / Nombre */}
           <a
             className="text-2xl font-bold text-primary"
@@ -92,7 +96,7 @@ export const Navbar = () => {
           </a>
 
           {/* Links de navegación */}
-          <nav className="flex flex-col justify-center items-center gap-4 text-lg">
+          <nav className="flex flex-col justify-center items-center gap-2 text-lg">
             {navItems.map((item, key) => (
               <a
                 key={key}

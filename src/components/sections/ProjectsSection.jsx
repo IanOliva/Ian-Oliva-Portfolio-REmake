@@ -12,7 +12,7 @@ const ProjectsSection = () => {
         <span className="text-primary">P</span>rojectos{" "}
         <span className="text-primary">d</span>estacados
       </h2>
-      <div className="text-left text-muted-foreground max-w-2xl text-lg">
+      <div className="text-left text-muted-foreground max-w-2xl text-lg font-mono">
         <ReusableTypewriter
           paragraphs={["Aqui estan algunos de mis proyectos destacados:"]}
         />
