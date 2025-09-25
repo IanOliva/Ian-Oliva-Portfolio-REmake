@@ -6,4 +6,4 @@ const GrainBackground = () => {
   )
 }
 
-export default GrainBackground
+export default GrainBackground;

@@ -32,6 +32,7 @@
     "react-simple-typewriter": "^5.0.1",
     "react-toastify": "^11.0.5",
     "spoiled": "^0.4.0",
+    "swiper": "^12.0.2",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11"
   },
@@ -44,6 +45,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
+    "tailwind-scrollbar": "^4.0.2",
     "vite": "^7.0.4"
   }
 }

@@ -42,10 +42,9 @@
   --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
   --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
   --animate-meteor: meteor 5s linear infinite;
-  --animate-glitch: glitch 0.6s steps(2,end);
+  --animate-glitch: glitch 0.6s steps(2, end);
 
   @keyframes glitch {
-
     0% {
       transform: skew(0deg);
     }
@@ -94,7 +93,6 @@
       transform: translateY(0);
     }
   }
- 
 }
 
 @layer base {
@@ -127,12 +125,31 @@
 
   html {
     @apply scroll-smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #00ff99 #0a0a0a;
   }
 
   body {
     @apply bg-background text-foreground transition-colors duration-300;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ff99;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff99;
 }
 
 @layer utilities {
@@ -309,11 +326,20 @@
   }
 }
 
-@utility text-glow {
-  @apply relative;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 3px #ffffff;
+  }
 
+  .blood-glow {
+    text-shadow: 0px 0px 6px rgba(255, 0, 0, 0.6);
+  }
+
+  .console-frame {
+    box-shadow:inset 0px 0px 10px 0px rgba(0, 255, 45, 1);
+  
+  }
+}
 @utility card-hover {
   @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
 }
@@ -331,21 +357,18 @@
            text-white border border-red-600 rounded-md overflow-hidden 
            transition-all duration-300 shadow-lg;
 
-    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.15), transparent 100%);
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 0, 0, 0.15),
+      transparent 100%
+    );
   }
-
-
 
   .fog-button:hover {
     @apply border-red-500 scale-105;
     box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
   }
 }
-
-
-
-
-
 
 @utility icon-tech {
   .icon-tech {
@@ -355,6 +378,10 @@
   .icon-tech:hover {
     @apply scale-110 drop-shadow-lg;
   }
+}
+
+@utility console-glow {
+  @apply text-[#00ff99] [text-shadow:0_0_5px_#00ff99,0_0_15px_#00ff99,0_0_30px_#00ff99];
 }
 
 /* @utility star {
@@ -374,11 +401,3 @@
   text-align: center;
 }
 
-@layer utilities {
-  /* Corrige el corte del efecto por Splide */
-  .splide__slide,
-  .splide__track,
-  .splide__list {
-    overflow: visible !important;
-  }
-}

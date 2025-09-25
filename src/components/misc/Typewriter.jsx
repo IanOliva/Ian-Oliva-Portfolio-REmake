@@ -3,7 +3,7 @@ import { Typewriter } from 'react-simple-typewriter'
 
 const TypewriterStrings = () => {
   return (
-    <Typewriter words={["Técnico en programación","Frontend Dev", "Backend Dev" ]}
+    <Typewriter words={["Técnico en programación","Frontend Dev", "Backend Dev"]}
     cursor={true}
     cursorBlinking={true}
     cursorStyle="|"

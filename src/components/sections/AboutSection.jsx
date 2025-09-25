@@ -15,6 +15,8 @@ import { SiMysql, SiMongodb, SiExpress } from "react-icons/si";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { Section } from "@/components/Section";
 import ReusableTypewriter from "@/components/misc/ReusableTypewriter";
+import DecoderText from "../misc/DecoderText";
+
 
 const AboutMe = () => {
   const paragraphs = [
@@ -27,7 +29,7 @@ const AboutMe = () => {
       {/* Overlay CRT Scanlines */}
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(to_bottom,rgba(255,0,0,0.05)_0_2px,transparent_2px_4px)] opacity-20 animate-[scrollLines_6s_linear_infinite]" />
       <div className="flex items-center justify-between mb-10">
-        <h2 className="text-4xl md:text-8xl font-resident tracking-wide text-left">
+        <h2 className="text-4xl md:text-8xl font-resident tracking-wide text-left text-glow">
           <span className="text-primary">S</span>obre{" "}
           <span className="text-primary">m</span>i
         </h2>
@@ -60,11 +62,15 @@ const AboutMe = () => {
             </a>
           </div>
         </div>
-        <div className="relative overflow-hidden rounded-2xl border border-primary/40 bg-gradient-to-b from-background/60 to-background/30 shadow-lg hover:shadow-2xl transition-all duration-500">
+        <div className="overflow-hidden shadow-lg transition-all duration-500 console-frame">
           {/* Encabezado */}
           <div className="px-6 pt-6 pb-2">
             <h4 className="text-2xl font-typewriter tracking-wide text-center text-primary">
-              Tecnologías
+              <DecoderText texts={["Tecnologías", "Usadas"]} delay = {100} speed = {50} loop={true} pauseBetween={2000}/>
+  
+  
+  
+  
             </h4>
           </div>
 

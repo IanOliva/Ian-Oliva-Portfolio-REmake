@@ -45,7 +45,7 @@ const ContactSection = () => {
     <Section id="contact">
       {/* Overlay CRT Scanlines */}
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(to_bottom,rgba(255,0,0,0.05)_0_2px,transparent_2px_4px)] opacity-20 animate-[scrollLines_6s_linear_infinite]" />
-      <h2 className="text-4xl md:text-8xl font-resident tracking-wide text-left">
+      <h2 className="text-4xl md:text-8xl font-resident tracking-wide text-left text-glow">
         <span className="text-primary">C</span>ontacto
       </h2>
 
