@@ -33,7 +33,7 @@ export default function HudWithModal() {
       {/* HUD */}
       <div
         onClick={handleClick}
-        className="relative top-20 w-[150px] h-[75px] bg-[#0a0c0d] border-4 border-[#1a1d1f] rounded-md shadow-[0_0_0_2px_#060708_inset,0_0_24px_#000,0_8px_40px_rgba(0,0,0,0.6)] overflow-hidden cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+        className="cursor-target relative top-20 w-[150px] h-[75px] bg-[#0a0c0d] border-4 border-[#1a1d1f] rounded-md shadow-[0_0_0_2px_#060708_inset,0_0_24px_#000,0_8px_40px_rgba(0,0,0,0.6)] overflow-hidden cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
         aria-label={`Estado: ${status}`}
       >
         {/* Bloque lateral izquierdo */}

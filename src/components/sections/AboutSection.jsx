@@ -17,7 +17,6 @@ import { Section } from "@/components/Section";
 import ReusableTypewriter from "@/components/misc/ReusableTypewriter";
 import DecoderText from "../misc/DecoderText";
 
-
 const AboutMe = () => {
   const paragraphs = [
     "Soy un programador que disfruta transformar ideas en proyectos reales. Me gusta crear sitios y aplicaciones que no solo se vean bien, sino que también sean fáciles y agradables de usar.",
@@ -28,6 +27,7 @@ const AboutMe = () => {
     <Section id="about">
       {/* Overlay CRT Scanlines */}
       <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(to_bottom,rgba(255,0,0,0.05)_0_2px,transparent_2px_4px)] opacity-20 animate-[scrollLines_6s_linear_infinite]" />
+
       <div className="flex items-center justify-between mb-10">
         <h2 className="text-4xl md:text-8xl font-resident tracking-wide text-left text-glow">
           <span className="text-primary">S</span>obre{" "}
@@ -38,9 +38,11 @@ const AboutMe = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid gap-10 md:grid-cols-2">
         <div className="space-y-6 text-left">
-          <h3 className="text-2xl font-typewriter tracking-wide">Técnico en Programación</h3>
+          <h3 className="text-2xl font-typewriter tracking-wide">
+            Técnico en Programación
+          </h3>
           <div className="text-muted-foreground font-mono">
             <ReusableTypewriter
               paragraphs={paragraphs}
@@ -50,27 +52,29 @@ const AboutMe = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-            <a href="#contact" className="fog-button">
+            <a href="#contact" className="fog-button cursor-target">
               Contactame
             </a>
             <a
               href="https://docs.google.com/document/d/1nYjp6P7Eiq2jIu5ZYsvs-N0AR6NeOsKLFqLqaFwocdk/edit?usp=sharing"
               target="_blank"
-              className="fog-button"
+              className="fog-button cursor-target"
             >
               Ver CV
             </a>
           </div>
         </div>
-        <div className="overflow-hidden shadow-lg transition-all duration-500 console-frame">
+        <div className="shadow-lg transition-all duration-500 console-frame">
           {/* Encabezado */}
           <div className="px-6 pt-6 pb-2">
             <h4 className="text-2xl font-typewriter tracking-wide text-center text-primary">
-              <DecoderText texts={["Tecnologías", "Usadas"]} delay = {100} speed = {50} loop={true} pauseBetween={2000}/>
-  
-  
-  
-  
+              <DecoderText
+                texts={["Tecnologías", "Usadas"]}
+                delay={100}
+                speed={50}
+                loop={true}
+                pauseBetween={2000}
+              />
             </h4>
           </div>
 
@@ -115,7 +119,7 @@ const AboutMe = () => {
                 className="group relative flex justify-center items-center"
               >
                 {/* Icono con glow suave */}
-                <div className="text-5xl transition-transform duration-300 hover:scale-110 drop-shadow-[0_0_6px_rgba(255,255,255,0.2)]">
+                <div className="text-5xl cursor-target transition-transform duration-300 hover:scale-110 drop-shadow-[0_0_6px_rgba(255,255,255,0.2)] ">
                   {tech.icon}
                 </div>
 

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import DecodeWord from "./DecodeWord";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,15 +11,17 @@ const ProjectsCarousel = () => {
     {
       id: 1,
       img: "projects/ecommerce.png",
+      role: "FullStack",
       alt: "ecommerce",
       title: "Ecommerce",
-      description: "Proyecto de Ecommerce",
+      description: "Mi primer proyecto de Ecommerce",
       technologies: ["PHP", "Bootstrap", "Mysql"],
       link: "#",
     },
     {
       id: 2,
       img: "projects/ecommerceRemake.png",
+      role: "FullStack",
       alt: "Ecommerce Remake",
       title: "Ecommerce Remake",
       description: "Proyecto de Ecommerce recreado con Laravel 11",
@@ -29,6 +31,7 @@ const ProjectsCarousel = () => {
     {
       id: 3,
       img: "projects/cap proyecto role game.png",
+      role: "Frontend",
       alt: "Role Game",
       title: "Role Game",
       description: "Proyecto de juego de rol",
@@ -38,24 +41,27 @@ const ProjectsCarousel = () => {
     {
       id: 4,
       img: "projects/ticket-track.png",
+      role: "FullStack",
       alt: "Sistema de Tickets de incidencias",
       title: "Ticket Track",
-      description: "Sistema de Tickets",
-      technologies: ["Node.js", "Express", "MySQL"],
+      description: "Sistema de gestion de tickets de incidencias",
+      technologies: ["Node.js", "Express", "MySQL", "EJS", "Bootstrap"],
       link: "https://ticket-track-lilac.vercel.app",
     },
     {
       id: 5,
       img: "projects/multometro.png",
+      role: "FullStack",
       alt: "multometro",
       title: "Multómetro",
       description: "Sistema para gestionar multas de tráfico",
-      technologies: ["Node.js", "Tailwind", "MySQL"],
+      technologies: ["Node.js", "Tailwind", "MySQL", "EJS"],
       link: "#",
     },
     {
       id: 6,
       img: "projects/avanti.png",
+      role: "Backend",
       alt: "avanti",
       title: "Avanti",
       description: "Plataforma de crowdfunding",
@@ -65,15 +71,24 @@ const ProjectsCarousel = () => {
     {
       id: 7,
       img: "projects/QRManager.png",
+      role: "FullStack",
       alt: "qr manager",
       title: "QR Manager",
       description: "Sistema para generar y editar códigos QR",
-      technologies: ["Node.js", "Express", "MySQL", "Sequelize", "Tailwind"],
+      technologies: [
+        "Node.js",
+        "Express",
+        "MySQL",
+        "Sequelize",
+        "Tailwind",
+        "React.js",
+      ],
       link: "#",
     },
     {
       id: 8,
       img: "projects/fakegram.png",
+      role: "Fullstack",
       alt: "fakegram",
       title: "Fakegram",
       description: "Clon de instagram",
@@ -125,17 +140,17 @@ const ProjectsCarousel = () => {
           <SwiperSlide key={i} className="transition-all duration-500">
             {({ isActive }) => (
               <div
-                className={`rounded-2xl shadow-lg overflow-hidden transition-transform duration-500 ${
+                className={`rounded-2xl shadow-lg overflow-hidden transition-transform duration-500 console-frame ${
                   isActive
                     ? "scale-105 opacity-100 "
                     : "scale-90 opacity-60 filter grayscale blur-[1px] "
                 }`}
               >
-                <div className="h-30 w-full overflow-hidden">
+                <div className="h-30 w-full">
                   <img
                     src={project.img}
                     alt={project.alt}
-                    className="w-full h-full rounded object-cover transition-all duration-500"
+                    className="w-full h-full object-cover border border-green-500"
                   />
                 </div>
 
@@ -143,6 +158,9 @@ const ProjectsCarousel = () => {
                   <h3 className="text-xl font-mono console-glow mb-1">
                     <DecodeWord text={project.title} loop={true} />
                   </h3>
+                  <div className="text-center font-typewriter backdrop-blur-sm">
+                    <p className="text-black">{project.role}</p>
+                  </div>
                   <p className="text-sm text-foreground font-mono mb-3">
                     {project.description}
                   </p>

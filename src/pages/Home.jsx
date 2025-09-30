@@ -3,6 +3,7 @@ import ThemeToggle from "@/components/misc/ThemeToggle";
 import IntroScreen from "@/components/sections/IntroScreen";
 import GrainBackground from "@/components/GrainBackground";
 import MouseParticles from "@/components/MouseParticles";
+import TargetCursor from "@/components/misc/TargetCursor";
 import { Navbar } from "@/components/Navbar";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
@@ -40,13 +41,14 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative transition-colors duration-1000">
       {showIntro && <IntroScreen onContinue={handleContinue} />}
-
+      <TargetCursor spinDuration={5} hideDefaultCursor={true} />
       {!showIntro && (
         <>
           {/* bg effect */}
           <GrainBackground />
           {/* Mouse particles */}
-          <MouseParticles />
+          {/* <MouseParticles /> */}
+          
           {/* Navbar */}
           <Navbar />
           {/* Hero section */}

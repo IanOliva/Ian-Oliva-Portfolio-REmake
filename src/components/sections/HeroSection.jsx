@@ -27,14 +27,14 @@ const HeroSection = () => {
         <p className="max-w-3xl font-mono text-lg md:text-lg text-muted-foreground opacity-0 animate-fade-in-delay-3 ">
           <span className="console-glow">[</span>Archivo clasificado
           <span className="console-glow">]</span> : Desarrollador especializado
-          en <span className="console-glow">desarrollo web</span> y Estado:{" "}
+          en <span className="console-glow">desarrollo web</span>. Estado:{" "}
           <span className="console-glow">activo</span> Misión: Crear
           experiencias digitales intuitivas y eficientes.
         </p>
 
         {/* Botón */}
         <div className="pt-4 animate-fade-in-delay-4">
-          <a href="#projects" className="fog-button">
+          <a href="#projects" className="fog-button cursor-target">
             <span className="relative z-10">Ver Proyectos</span>
           </a>
         </div>

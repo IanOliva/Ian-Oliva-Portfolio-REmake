@@ -103,7 +103,7 @@ export const Navbar = () => {
                 href={item.href}
                 data-text={item.name}
                 className={cn(
-                  "transition-colors duration-300 ",
+                  "transition-colors duration-300 cursor-target",
                   activeSection === item.href
                     ? "text-primary link-animated"
                     : "text-foreground/80 hover:text-primary hover:link-animated"

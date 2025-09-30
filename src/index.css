@@ -336,9 +336,29 @@
   }
 
   .console-frame {
-    box-shadow:inset 0px 0px 10px 0px rgba(0, 255, 45, 1);
-  
+    box-shadow: inset 0 0 15px rgba(0, 255, 45, 0.8),
+      0 0 10px rgba(0, 255, 45, 0.6); /* glow externo */
+    border: 1px solid rgba(0, 255, 45, 0.8);
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 45, 0.05) 0px,
+      rgba(0, 255, 45, 0.05) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    background-size: 100% 4px;
+    animation: flicker 3s infinite;
+    
   }
+
+  @keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.8;
+  }
+}
 }
 @utility card-hover {
   @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
@@ -400,4 +420,3 @@
   padding: 0;
   text-align: center;
 }
-
