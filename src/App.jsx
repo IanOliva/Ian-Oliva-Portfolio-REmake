@@ -1,23 +1,33 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
+import { initGA } from './utils/Analitics';
+import { usePageTracking } from './hooks/usePageTracking';
 
-
-function App() {
-  
+// Componente interno que usa el hook
+function AppRoutes() {
+  usePageTracking(); // Ahora SÍ tiene acceso al router
 
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Home/>}/>
-          
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-      
-    </>
-  )
+    <Routes>
+      <Route index element={<Home/>}/>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
 }
 
-export default App
+function App() {
+  useEffect(() => {
+    // Inicializar GA cuando la app carga
+    initGA();
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
+}
+
+export default App;
