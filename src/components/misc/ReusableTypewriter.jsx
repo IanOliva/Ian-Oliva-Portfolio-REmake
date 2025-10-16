@@ -1,14 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { useSlideFinished } from "@/context/Context";
 
 const ReusableTypewriter = ({ paragraphs = [], typeSpeed = 20, delayBetween = 800 }) => {
   const slideFinished = useSlideFinished();
   const [visibleParagraphs, setVisibleParagraphs] = useState([]);
-  const [finishedParagraphs, setFinishedParagraphs] = useState(0); // índice de párrafos ya terminados
+  const [finishedParagraphs, setFinishedParagraphs] = useState(0);
+  const timeoutsRef = useRef([]);
+  const isProcessingRef = useRef(false); // Bandera para evitar ejecuciones múltiples
+  const hasStartedRef = useRef(false); // Bandera para ejecutar solo una vez
 
   useEffect(() => {
-    if (!slideFinished) return;
+    if (!slideFinished) {
+      // Reset completo cuando slideFinished es false
+      setVisibleParagraphs([]);
+      setFinishedParagraphs(0);
+      timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
+      timeoutsRef.current = [];
+      isProcessingRef.current = false;
+      hasStartedRef.current = false;
+      return;
+    }
+
+    // Evitar ejecución múltiple
+    if (isProcessingRef.current || hasStartedRef.current) {
+      return;
+    }
+
+    isProcessingRef.current = true;
+    hasStartedRef.current = true;
+
+    // Limpiar timeouts previos por seguridad
+    timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
+    timeoutsRef.current = [];
 
     let currentIndex = 0;
 
@@ -24,11 +48,19 @@ const ReusableTypewriter = ({ paragraphs = [], typeSpeed = 20, delayBetween = 80
           showNextParagraph();
         }, estimatedTime);
 
-        return () => clearTimeout(timeout);
+        timeoutsRef.current.push(timeout);
+      } else {
+        isProcessingRef.current = false;
       }
     };
 
     showNextParagraph();
+
+    // Cleanup function
+    return () => {
+      timeoutsRef.current.forEach(timeout => clearTimeout(timeout));
+      timeoutsRef.current = [];
+    };
   }, [slideFinished, paragraphs, typeSpeed, delayBetween]);
 
   return (
@@ -37,7 +69,7 @@ const ReusableTypewriter = ({ paragraphs = [], typeSpeed = 20, delayBetween = 80
         <p key={index} className="mb-6">
           <Typewriter
             words={[paragraph]}
-            cursor={index === finishedParagraphs}   // cursor visible solo en el párrafo activo
+            cursor={index === finishedParagraphs}
             cursorStyle="|"
             cursorBlinking={index === finishedParagraphs}
             typeSpeed={typeSpeed}

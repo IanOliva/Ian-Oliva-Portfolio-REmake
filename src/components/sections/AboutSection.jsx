@@ -16,12 +16,13 @@ import { RiTailwindCssFill } from "react-icons/ri";
 import { Section } from "@/components/Section";
 import ReusableTypewriter from "@/components/misc/ReusableTypewriter";
 import DecoderText from "../misc/DecoderText";
+import { Slide } from "react-awesome-reveal";
 
 const AboutMe = () => {
-  const paragraphs = [
-    "Soy un programador que disfruta transformar ideas en proyectos reales. Me gusta crear sitios y aplicaciones que no solo se vean bien, sino que también sean fáciles y agradables de usar.",
-    "A lo largo de mi experiencia he trabajado con tecnologías modernas, buscando siempre que el código sea limpio, rápido y accesible para todos. Me motiva aprender cosas nuevas y aplicar lo que descubro para que cada proyecto sea mejor que el anterior.",
-  ];
+  const text1 = "Soy un programador que disfruta transformar ideas en proyectos reales. Me gusta crear sitios y aplicaciones que no solo se vean bien, sino que también sean fáciles y agradables de usar.";
+  const text2 = "A lo largo de mi experiencia he trabajado con tecnologías modernas, buscando siempre que el código sea limpio, rápido y accesible para todos. Me motiva aprender cosas nuevas y aplicar lo que descubro para que cada proyecto sea mejor que el anterior.";
+
+  
 
   return (
     <Section id="about">
@@ -44,11 +45,10 @@ const AboutMe = () => {
             Técnico en Programación
           </h3>
           <div className="text-muted-foreground font-mono">
-            <ReusableTypewriter
-              paragraphs={paragraphs}
-              typespeed={30}
-              delayBetween={800}
-            />
+            
+              <p>{text1}</p>
+              <p>{text2}</p>
+
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">

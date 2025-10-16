@@ -140,7 +140,7 @@ const ProjectsCarousel = () => {
           <SwiperSlide key={i} className="transition-all duration-500">
             {({ isActive }) => (
               <div
-                className={`rounded-2xl shadow-lg overflow-hidden transition-transform duration-500 console-frame ${
+                className={`rounded-2xl cursor-target shadow-lg overflow-hidden transition-transform duration-500 console-frame ${
                   isActive
                     ? "scale-105 opacity-100 "
                     : "scale-90 opacity-60 filter grayscale blur-[1px] "
@@ -158,9 +158,9 @@ const ProjectsCarousel = () => {
                   <h3 className="text-xl font-mono console-glow mb-1">
                     <DecodeWord text={project.title} loop={true} />
                   </h3>
-                  <div className="text-center font-typewriter backdrop-blur-sm">
+                  {/* <div className="text-center font-typewriter backdrop-blur-sm">
                     <p className="text-black">{project.role}</p>
-                  </div>
+                  </div> */}
                   <p className="text-sm text-foreground font-mono mb-3">
                     {project.description}
                   </p>

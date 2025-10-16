@@ -2,7 +2,8 @@ import React from "react";
 import { ChevronDown } from "lucide-react";
 import TypewriterStrings from "@/components/misc/Typewriter";
 import { Section } from "@/components/Section";
-import DecoderText from "../misc/DecoderText";
+
+import Textra from 'react-textra'
 
 const HeroSection = () => {
   return (
@@ -19,7 +20,8 @@ const HeroSection = () => {
 
         {/* Subtítulo con efecto terminal */}
         <h3 className="font-typewriter text-2xl md:text-3xl text-primary opacity-0 animate-fade-in-delay-1 mt-3 tracking-widest blood-glow">
-          <TypewriterStrings />
+          <Textra effect='press' data={["Técnico en programación","Frontend Dev", "Backend Dev"]}
+          stopDuration={1000} />
         </h3>
         {/* Texto con efecto de decodificación */}
 
