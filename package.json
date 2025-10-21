@@ -34,6 +34,7 @@
     "react-parallax-tilt": "^1.7.303",
     "react-router-dom": "^7.7.0",
     "react-simple-typewriter": "^5.0.1",
+    "react-spinners": "^0.17.0",
     "react-textra": "^0.2.0",
     "react-toastify": "^11.0.5",
     "spoiled": "^0.4.0",

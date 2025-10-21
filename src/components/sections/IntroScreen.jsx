@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import FuzzyText from "../misc/FuzzyText";
 import LightRays from "../misc/LightRays";
+import RingLoader from "react-spinners/RingLoader";
 
 const IntroScreen = ({ onContinue }) => {
+  const [loading, setLoading] = useState(false);
+  const handleClick = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      onContinue();
+    }, 3000);
+  };
+
   return (
     <div className="fixed inset-0 z-[999] bg-black text-white flex flex-col items-center justify-center">
       <LightRays
@@ -24,10 +35,17 @@ const IntroScreen = ({ onContinue }) => {
           Una presentación con una estética survival horror.
         </p>
         <button
-          onClick={onContinue}
+          onClick={handleClick}
+          disabled={loading}
           className="cursor-target px-6 py-3 mt-6 bg-primary hover:bg-red-800 text-white font-typewriter rounded-md shadow-lg tracking-wider transition-all duration-300 animate-pulse"
         >
-          CONTINUAR
+          {loading ? (
+            <>
+             <p className="flex gap-4 ">CARGANDO <RingLoader size={24} color="#ffffff" /></p> 
+            </>
+          ) : (
+            "CONTINUAR"
+          )}
         </button>
       </div>
     </div>

@@ -98,7 +98,7 @@ const ProjectsCarousel = () => {
   ];
 
   return (
-    <section className="">
+    <section className="overflow-hidden py-10">
       <Swiper
         modules={[Navigation, Autoplay]}
         navigation={{
@@ -115,11 +115,11 @@ const ProjectsCarousel = () => {
           768: { slidesPerView: 2.2 },
           1024: { slidesPerView: 3.2 },
         }}
-        className="px-6"
+        className="px-6 "
       >
         {/* 🔥 Flechas personalizadas */}
         <button
-          className="custom-prev absolute z-10 top-1/2 left-2 -translate-y-1/2 
+          className="custom-prev cursor-target absolute z-10 top-1/2 left-2 -translate-y-1/2 
         bg-black/70 border border-green-500 shadow-[0_0_10px_#00ff99] 
         p-3 rounded-full text-green-400 transition-transform duration-200 
         hover:scale-110 hover:shadow-[0_0_20px_#00ff99] hover:animate-pulse"
@@ -128,7 +128,7 @@ const ProjectsCarousel = () => {
         </button>
 
         <button
-          className="custom-next absolute z-10 top-1/2 right-2 -translate-y-1/2 
+          className="custom-next cursor-target absolute z-10 top-1/2 right-2 -translate-y-1/2 
         bg-black/70 border border-green-500 shadow-[0_0_10px_#00ff99] 
         p-3 rounded-full text-green-400 transition-transform duration-200 
         hover:scale-110 hover:shadow-[0_0_20px_#00ff99] hover:animate-pulse"
@@ -137,7 +137,7 @@ const ProjectsCarousel = () => {
         </button>
 
         {projects.map((project, i) => (
-          <SwiperSlide key={i} className="transition-all duration-500">
+          <SwiperSlide key={i} className="transition-all duration-500 !overflow-visible">
             {({ isActive }) => (
               <div
                 className={`rounded-2xl cursor-target shadow-lg overflow-hidden transition-transform duration-500 console-frame ${

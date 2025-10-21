@@ -348,17 +348,30 @@
     );
     background-size: 100% 4px;
     animation: flicker 3s infinite;
-    
+  }
+  .swiper,
+  .swiper-wrapper,
+  .swiper-slide {
+    overflow: visible !important;
   }
 
   @keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    opacity: 1;
+    0%,
+    19%,
+    21%,
+    23%,
+    25%,
+    54%,
+    56%,
+    100% {
+      opacity: 1;
+    }
+    20%,
+    24%,
+    55% {
+      opacity: 0.8;
+    }
   }
-  20%, 24%, 55% {
-    opacity: 0.8;
-  }
-}
 }
 @utility card-hover {
   @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
