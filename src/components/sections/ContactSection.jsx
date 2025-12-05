@@ -61,9 +61,7 @@ const ContactSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Columna izquierda */}
         <div className="">
-          <h3 className="text-2xl font-mono mb-6">
-            Información de Contacto
-          </h3>
+          <h3 className="text-2xl font-mono mb-6">Información de Contacto</h3>
 
           <div className="space-y-4 justify-center font-mono">
             <div className="flex items-start space-x-4">
@@ -107,7 +105,12 @@ const ContactSection = () => {
                 target="_blank"
                 className="text-glow card-hover"
               >
-                <Linkedin size={35} />
+                <button className="p-3 rounded-full backdrop-blur-lg border border-white/10 bg-gradient-to-tr from-black/60 to-black/40 shadow-lg hover:shadow-2xl hover:shadow-white/20 hover:scale-110 hover:rotate-3 active:scale-95 active:rotate-0 transition-all duration-300 ease-out cursor-pointer hover:border-white/30 hover:bg-gradient-to-tr hover:from-white/10 hover:to-black/40 group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+                  <div className="relative z-10">
+                    <Linkedin size={35} className="" />
+                  </div>
+                </button>
               </a>
 
               <a
@@ -115,7 +118,12 @@ const ContactSection = () => {
                 target="_blank"
                 className="text-glow card-hover"
               >
-                <Instagram size={35} />
+                <button className="p-3 rounded-full backdrop-blur-lg border border-red-500/20 bg-gradient-to-tr from-black/60 to-black/40 shadow-lg hover:shadow-2xl hover:shadow-red-500/30 hover:scale-110 hover:rotate-2 active:scale-95 active:rotate-0 transition-all duration-300 ease-out cursor-pointer hover:border-red-500/50 hover:bg-gradient-to-tr hover:from-red-500/10 hover:to-black/40 group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-400/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+                  <div className="relative z-10">
+                    <Instagram size={35} />
+                  </div>
+                </button>
               </a>
 
               <a
@@ -123,7 +131,12 @@ const ContactSection = () => {
                 target="_blank"
                 className="text-glow card-hover"
               >
-                <Github size={35} />
+                <button className="p-3 rounded-full backdrop-blur-lg border border-green-500/20 bg-gradient-to-tr from-black/60 to-black/40 shadow-lg hover:shadow-2xl hover:shadow-green-500/30 hover:scale-110 hover:rotate-2 active:scale-95 active:rotate-0 transition-all duration-300 ease-out cursor-pointer hover:border-green-500/50 hover:bg-gradient-to-tr hover:from-green-500/10 hover:to-black/40 group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+                  <div className="relative z-10">
+                    <Github size={35} />
+                  </div>
+                </button>
               </a>
             </div>
           </div>
@@ -133,7 +146,11 @@ const ContactSection = () => {
         <div className="bg-card  rounded-lg shadow-xs">
           <h3 className="text-2xl font-mono mb-6">Envia un mensaje</h3>
 
-          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 font-mono">
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="space-y-6 font-mono"
+          >
             <div>
               <label htmlFor="name" className="block text-sm  mb-2">
                 Tu nombre
@@ -163,10 +180,7 @@ const ContactSection = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-mono mb-2"
-              >
+              <label htmlFor="message" className="block text-sm font-mono mb-2">
                 Tu Mensaje
               </label>
               <textarea
@@ -182,7 +196,7 @@ const ContactSection = () => {
               type="submit"
               disabled={isSubmitting}
               className={cn(
-                "fog-button w-full flex items-center justify-center gap-2 cursor-target",
+                "fog-button w-full flex items-center justify-center gap-2 cursor-target"
               )}
             >
               {isSubmitting ? "Enviando..." : "Enviar"}

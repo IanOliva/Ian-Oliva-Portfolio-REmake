@@ -15,14 +15,16 @@ import { SiMysql, SiMongodb, SiExpress } from "react-icons/si";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { Section } from "@/components/Section";
 import ReusableTypewriter from "@/components/misc/ReusableTypewriter";
-import DecoderText from "../misc/DecoderText";
-import { Slide } from "react-awesome-reveal";
+import DecodeWord from "../misc/DecodeWord";
+import ConsoleRadar from "../misc/ConsoleRadar";
+import ConsoleBackground from "../misc/ConsoleBackround";
+import ConsoleButton from "../misc/ConsoleButton";
 
 const AboutMe = () => {
-  const text1 = "Soy un programador que disfruta transformar ideas en proyectos reales. Me gusta crear sitios y aplicaciones que no solo se vean bien, sino que también sean fáciles y agradables de usar.";
-  const text2 = "A lo largo de mi experiencia he trabajado con tecnologías modernas, buscando siempre que el código sea limpio, rápido y accesible para todos. Me motiva aprender cosas nuevas y aplicar lo que descubro para que cada proyecto sea mejor que el anterior.";
-
-  
+  const text1 =
+    "Soy un programador que disfruta transformar ideas en proyectos reales. Me gusta crear sitios y aplicaciones que no solo se vean bien, sino que también sean fáciles y agradables de usar.";
+  const text2 =
+    "A lo largo de mi experiencia he trabajado con tecnologías modernas, buscando siempre que el código sea limpio, rápido y accesible para todos. Me motiva aprender cosas nuevas y aplicar lo que descubro para que cada proyecto sea mejor que el anterior.";
 
   return (
     <Section id="about">
@@ -42,45 +44,47 @@ const AboutMe = () => {
       <div className="grid gap-10 md:grid-cols-2">
         <div className="space-y-6 text-left">
           <h3 className="text-2xl font-typewriter tracking-wide">
-            Técnico en Programación
+            IAN OLIVA IO-DEV-05-06.
           </h3>
           <div className="text-muted-foreground font-mono">
-            
-              <p>{text1}</p>
-              <p>{text2}</p>
-
+            <p>
+              Perfil orientado a [desarrollo web]
+              moderno. Presenta habilidad para convertir ideas en prototipos
+              estables y usables. Mantiene rutina continua de mejora,
+              aprendizaje y refinamiento de procesos.
+            </p>
+            <p>
+              Registros internos indican que el sujeto emplea [tecnologías avanzadas]
+            </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-            <a href="#contact" className="fog-button cursor-target">
-              Contactame
+            <a href="#contact">
+              <ConsoleButton icon={<Briefcase />} text="Contactame" />
             </a>
             <a
               href="https://docs.google.com/document/d/1nYjp6P7Eiq2jIu5ZYsvs-N0AR6NeOsKLFqLqaFwocdk/edit?usp=sharing"
               target="_blank"
-              className="fog-button cursor-target"
+              norel="noopener noreferrer"
             >
-              Ver CV
+              <ConsoleButton icon={<User />} text="Ver CV" />
             </a>
           </div>
         </div>
-        <div className="shadow-lg transition-all duration-500 console-frame">
+        <div className="shadow-lg transition-all duration-500 console-frame relative">
+          <ConsoleBackground />
           {/* Encabezado */}
           <div className="px-6 pt-6 pb-2">
             <h4 className="text-2xl font-typewriter tracking-wide text-center text-primary">
-              <DecoderText
-                texts={["Tecnologías", "Usadas"]}
-                delay={100}
-                speed={50}
-                loop={true}
-                pauseBetween={2000}
-              />
+              <DecodeWord text="Tecnologías" speed={70} delay={40} />
             </h4>
           </div>
 
           {/* Grid de iconos */}
-          <div className="grid grid-cols-3 sm:grid-cols-4 gap-6 px-8 py-6">
-            {[
+          <div className=" px-8 py-6 relative">
+            <ConsoleRadar />
+
+            {/* {[
               { icon: <FaHtml5 className="text-orange-500" />, name: "HTML5" },
               { icon: <FaCss3Alt className="text-blue-500" />, name: "CSS3" },
               {
@@ -118,17 +122,17 @@ const AboutMe = () => {
                 key={i}
                 className="group relative flex justify-center items-center"
               >
-                {/* Icono con glow suave */}
+                
                 <div className="text-5xl cursor-target transition-transform duration-300 hover:scale-110 drop-shadow-[0_0_6px_rgba(255,255,255,0.2)] ">
                   {tech.icon}
                 </div>
 
-                {/* Tooltip */}
+                
                 <span className="absolute bottom-[-2rem] z-10 opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all duration-300 text-xs bg-black/90 border border-primary/30 text-white px-2 py-1 rounded-md shadow-md">
                   {tech.name}
                 </span>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
