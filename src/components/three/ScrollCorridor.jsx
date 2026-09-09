@@ -2,6 +2,9 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { createDetectiveBoard } from "./detectiveBoard";
+import { projects } from "@/data/projects";
+import { boardFixedPins } from "@/data/corridorBoard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,8 +13,8 @@ gsap.registerPlugin(ScrollTrigger);
 const CORRIDOR = {
   width: 4,
   height: 3,
-  length: 200, // distancia total que recorre la cámara
-  lightSpacing: 10, // cada cuántas unidades hay una luz de techo
+  length: 22, // pasillo corto: solo lleva hasta el tablero, no es el recorrido final
+  lightSpacing: 6,
   alarmLightEvery: 4, // 1 de cada N luces es roja (alarma) en vez de verde
 };
 
@@ -90,6 +93,31 @@ const ScrollCorridor = ({ scrollHeightRef } = {}) => {
     wallRight.position.set(W / 2, 0, -L / 2);
     scene.add(wallRight);
 
+    // ---- Marco de puerta a la entrada (detalle simple, puramente visual) ----
+    const doorFrameMat = new THREE.MeshStandardMaterial({ color: 0x1c1c20, roughness: 0.7 });
+    const doorFrameGeo = new THREE.BoxGeometry(0.12, H, 0.15);
+    const doorLeft = new THREE.Mesh(doorFrameGeo, doorFrameMat);
+    doorLeft.position.set(-W / 2 + 0.06, 0, -0.3);
+    scene.add(doorLeft);
+    const doorRight = new THREE.Mesh(doorFrameGeo, doorFrameMat);
+    doorRight.position.set(W / 2 - 0.06, 0, -0.3);
+    scene.add(doorRight);
+    const doorTopGeo = new THREE.BoxGeometry(W, 0.12, 0.15);
+    const doorTop = new THREE.Mesh(doorTopGeo, doorFrameMat);
+    doorTop.position.set(0, H / 2 - 0.06, -0.3);
+    scene.add(doorTop);
+
+    // ---- Tablero de detective al final del pasillo ----
+    const board = createDetectiveBoard({ projects, fixedPins: boardFixedPins });
+    board.position.set(0, 0.1, -(L - 0.15));
+    scene.add(board);
+
+    // Luz dedicada iluminando el tablero (independiente del espaciado de
+    // las luces del pasillo, para que se vea bien sin importar el largo)
+    const boardLight = new THREE.PointLight(0xfff2d0, 30, 6, 2);
+    boardLight.position.set(0, 0.6, -(L - 1.6));
+    scene.add(boardLight);
+
     // ---- Iluminación: ambiental + hemisférica de relleno + luces de techo ----
     // Nota: three.js (desde r155) usa unidades de luz físicamente correctas —
     // los mismos números de intensidad que "se veían bien" en versiones viejas
@@ -135,7 +163,7 @@ const ScrollCorridor = ({ scrollHeightRef } = {}) => {
     // ---- Cámara controlada por scroll ----
     const triggerEl = scrollHeightRef?.current || document.body;
     const scrollTween = gsap.to(camera.position, {
-      z: -(L - 6),
+      z: -(L - 2.4),
       ease: "none",
       scrollTrigger: {
         trigger: triggerEl,
@@ -156,7 +184,20 @@ const ScrollCorridor = ({ scrollHeightRef } = {}) => {
       sideWallGeo.dispose();
       wallMat.dispose();
       floorMat.dispose();
+      doorFrameGeo.dispose();
+      doorTopGeo.dispose();
+      doorFrameMat.dispose();
       pointLights.forEach((l) => scene.remove(l));
+      scene.remove(boardLight);
+
+      board.traverse((obj) => {
+        if (obj.geometry) obj.geometry.dispose();
+        if (obj.material) {
+          if (obj.material.map) obj.material.map.dispose();
+          obj.material.dispose();
+        }
+      });
+
       renderer.dispose();
 
       if (container.contains(renderer.domElement)) {
