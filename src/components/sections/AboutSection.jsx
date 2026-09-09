@@ -21,10 +21,6 @@ import ConsoleBackground from "../misc/ConsoleBackround";
 import ConsoleButton from "../misc/ConsoleButton";
 
 const AboutMe = () => {
-  const text1 =
-    "Soy un programador que disfruta transformar ideas en proyectos reales. Me gusta crear sitios y aplicaciones que no solo se vean bien, sino que también sean fáciles y agradables de usar.";
-  const text2 =
-    "A lo largo de mi experiencia he trabajado con tecnologías modernas, buscando siempre que el código sea limpio, rápido y accesible para todos. Me motiva aprender cosas nuevas y aplicar lo que descubro para que cada proyecto sea mejor que el anterior.";
 
   return (
     <Section id="about">
@@ -65,7 +61,7 @@ const AboutMe = () => {
             <a
               href="https://docs.google.com/document/d/1nYjp6P7Eiq2jIu5ZYsvs-N0AR6NeOsKLFqLqaFwocdk/edit?usp=sharing"
               target="_blank"
-              norel="noopener noreferrer"
+              rel="noopener noreferrer"
             >
               <ConsoleButton icon={<User />} text="Ver CV" />
             </a>

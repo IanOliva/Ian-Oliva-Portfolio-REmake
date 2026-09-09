@@ -1,6 +1,5 @@
 import React from "react";
 import { ChevronDown } from "lucide-react";
-import TypewriterStrings from "@/components/misc/Typewriter";
 import { Section } from "@/components/Section";
 import ConsoleButton from "@/components/misc/ConsoleButton";
 
@@ -24,14 +23,6 @@ const HeroSection = () => {
            <h5 className="md:text-4xl">(ID: IO-DEV-05-06)</h5>
         </h2>
 
-        {/* Subtítulo con efecto terminal */}
-        {/* <h3 className="font-typewriter text-2xl md:text-3xl text-primary opacity-0 animate-fade-in-delay-1 mt-3 tracking-widest blood-glow">
-          <Textra
-            effect="press"
-            data={["Técnico en programación", "Frontend Dev", "Backend Dev"]}
-            stopDuration={1000}
-          />
-        </h3> */}
 
         {/* Párrafo estilo dossier */}
         <p className="max-w-3xl text-left font-mono text-lg md:text-lg text-muted-foreground opacity-0 animate-fade-in-delay-3 ">
@@ -43,13 +34,16 @@ const HeroSection = () => {
           en instalaciones de formación avanzadas de <span className="console-glow">Ingeniería de Software.</span>
         </p>
         <div className="mx-auto">
+          <a href="#about">
+
           <ConsoleButton text="Proyectos" />
+          </a>
         </div>
       </div>
 
       {/* Scroll Indicator */}
       <button className="absolute z-10 bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
-        <ChevronDown className="h-12 w-12 text-red-500 drop-shadow-[0_0_10px_rgba(255,0,0,0.6)]" />
+        <ChevronDown className="h-12 w-12 text-primary drop-shadow-[0_0_10px_var(--color-primary)]" />
       </button>
     </Section>
   );

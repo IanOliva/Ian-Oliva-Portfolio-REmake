@@ -2,11 +2,11 @@ import { FaCode } from "react-icons/fa";
 
 const UmbrellaIDCard = ({ onClose }) => {
   return (
-    <div className="absolute overflow-visible top-30 left-100 w-100 bg-gradient-to-br from-[#0c0c0c] to-[#1a1a1a] rounded-lg border-4 border-red-800 shadow-[0_0_30px_rgba(255,0,0,0.6)] overflow-hidden font-typewriter text-white animate-fade-in">
+    <div className="absolute overflow-visible top-30 left-100 w-100 bg-gradient-to-br from-[#0c0c0c] to-[#1a1a1a] rounded-lg border-4 border-primary shadow-[0_0_30px_var(--color-primary)] overflow-hidden font-typewriter text-white animate-fade-in">
       {/* Botón de cierre */}
       <button
         onClick={onClose}
-        className="absolute top-0 right-[-30px] text-red-500 text-red-500 hover:text-red-300 transition-colors text-xl font-bold"
+        className="absolute top-0 right-[-30px] text-primary hover:text-red-300 transition-colors text-xl font-bold"
         aria-label="Cerrar"
       >
         ✕

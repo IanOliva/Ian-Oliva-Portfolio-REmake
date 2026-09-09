@@ -5,98 +5,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
+import { projects } from "@/data/projects";
 
 const ProjectsCarousel = () => {
-  const projects = [
-    {
-      id: 1,
-      img: "projects/ecommerce.png",
-      role: "FullStack",
-      alt: "ecommerce",
-      title: "Ecommerce",
-      description: "Mi primer proyecto de Ecommerce",
-      technologies: ["PHP", "Bootstrap", "Mysql"],
-      link: "#",
-    },
-    {
-      id: 2,
-      img: "projects/ecommerceRemake.png",
-      role: "FullStack",
-      alt: "Ecommerce Remake",
-      title: "Ecommerce Remake",
-      description: "Proyecto de Ecommerce recreado con Laravel 11",
-      technologies: ["PHP", "Laravel", "Bootstrap", "MySQL"],
-      link: "#",
-    },
-    {
-      id: 3,
-      img: "projects/cap proyecto role game.png",
-      role: "Frontend",
-      alt: "Role Game",
-      title: "Role Game",
-      description: "Proyecto de juego de rol",
-      technologies: ["HTML", "CSS", "JavaScript"],
-      link: "#",
-    },
-    {
-      id: 4,
-      img: "projects/ticket-track.png",
-      role: "FullStack",
-      alt: "Sistema de Tickets de incidencias",
-      title: "Ticket Track",
-      description: "Sistema de gestion de tickets de incidencias",
-      technologies: ["Node.js", "Express", "MySQL", "EJS", "Bootstrap"],
-      link: "https://ticket-track-lilac.vercel.app",
-    },
-    {
-      id: 5,
-      img: "projects/multometro.png",
-      role: "FullStack",
-      alt: "multometro",
-      title: "Multómetro",
-      description: "Sistema para gestionar multas de tráfico",
-      technologies: ["Node.js", "Tailwind", "MySQL", "EJS"],
-      link: "#",
-    },
-    {
-      id: 6,
-      img: "projects/avanti.png",
-      role: "Backend",
-      alt: "avanti",
-      title: "Avanti",
-      description: "Plataforma de crowdfunding",
-      technologies: ["Node.js", "Express", "MongoDB", "Mongoose"],
-      link: "#",
-    },
-    {
-      id: 7,
-      img: "projects/QRManager.png",
-      role: "FullStack",
-      alt: "qr manager",
-      title: "QR Manager",
-      description: "Sistema para generar y editar códigos QR",
-      technologies: [
-        "Node.js",
-        "Express",
-        "MySQL",
-        "Sequelize",
-        "Tailwind",
-        "React.js",
-      ],
-      link: "#",
-    },
-    {
-      id: 8,
-      img: "projects/fakegram.png",
-      role: "Fullstack",
-      alt: "fakegram",
-      title: "Fakegram",
-      description: "Clon de instagram",
-      technologies: ["React", "Tailwind", "MongoDB"],
-      link: "#",
-    },
-  ];
-
   return (
     <section className="overflow-hidden py-10">
       <Swiper
@@ -120,18 +31,18 @@ const ProjectsCarousel = () => {
         {/* 🔥 Flechas personalizadas */}
         <button
           className="custom-prev cursor-target absolute z-10 top-1/2 left-2 -translate-y-1/2 
-        bg-black/70 border border-green-500 shadow-[0_0_10px_#00ff99] 
-        p-3 rounded-full text-green-400 transition-transform duration-200 
-        hover:scale-110 hover:shadow-[0_0_20px_#00ff99] hover:animate-pulse"
+        bg-black/70 border border-console shadow-[0_0_10px_var(--color-console)] 
+        p-3 rounded-full text-console transition-transform duration-200 
+        hover:scale-110 hover:shadow-[0_0_20px_var(--color-console)] hover:animate-pulse"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
 
         <button
           className="custom-next cursor-target absolute z-10 top-1/2 right-2 -translate-y-1/2 
-        bg-black/70 border border-green-500 shadow-[0_0_10px_#00ff99] 
-        p-3 rounded-full text-green-400 transition-transform duration-200 
-        hover:scale-110 hover:shadow-[0_0_20px_#00ff99] hover:animate-pulse"
+        bg-black/70 border border-console shadow-[0_0_10px_var(--color-console)] 
+        p-3 rounded-full text-console transition-transform duration-200 
+        hover:scale-110 hover:shadow-[0_0_20px_var(--color-console)] hover:animate-pulse"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
@@ -150,7 +61,11 @@ const ProjectsCarousel = () => {
                   <img
                     src={project.img}
                     alt={project.alt}
-                    className="w-full h-full object-cover border border-green-500"
+                    width={project.width}
+                    height={project.height}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    className="w-full h-full object-cover border border-console"
                   />
                 </div>
 

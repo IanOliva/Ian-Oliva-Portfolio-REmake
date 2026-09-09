@@ -2,23 +2,26 @@
 
 @font-face {
   font-family: "JMH-Typewriter";
-  src: url("assets/JMH-Typewriter.ttf") format("truetype");
+  src: url("/fonts/JMH-Typewriter.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "re-font";
-  src: url("assets/re-font.ttf") format("truetype");
+  src: url("/fonts/re-font.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "VT323";
-  src: url("assets/VT323-Regular.ttf") format("truetype");
+  src: url("/fonts/VT323-Regular.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 
 @theme {
@@ -33,6 +36,10 @@
   --color-primary-foreground: var(--primary-foreground);
 
   --color-card: var(--card);
+
+  /* Verde "consola/terminal" — única fuente de verdad para el glow neón
+     que se repetía hardcodeado como #00ff99 en varios componentes. */
+  --color-console: #00ff99;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
@@ -126,7 +133,7 @@
   html {
     @apply scroll-smooth;
     scrollbar-width: thin;
-    scrollbar-color: #00ff99 #0a0a0a;
+    scrollbar-color: var(--color-console) #0a0a0a;
   }
 
   body {
@@ -144,12 +151,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00ff99;
+  background: var(--color-console);
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00ff99;
+  background: var(--color-console);
 }
 
 @layer utilities {
@@ -336,13 +343,13 @@
   }
 
   .console-frame {
-    box-shadow: inset 0 0 15px rgba(0, 255, 45, 0.8),
-      0 0 10px rgba(0, 255, 45, 0.6); /* glow externo */
-    border: 1px solid rgba(0, 255, 45, 0.8);
+    box-shadow: inset 0 0 15px color-mix(in srgb, var(--color-console) 80%, transparent),
+      0 0 10px color-mix(in srgb, var(--color-console) 60%, transparent); /* glow externo */
+    border: 1px solid color-mix(in srgb, var(--color-console) 80%, transparent);
     background-image: repeating-linear-gradient(
       to bottom,
-      rgba(0, 255, 45, 0.05) 0px,
-      rgba(0, 255, 45, 0.05) 2px,
+      color-mix(in srgb, var(--color-console) 5%, transparent) 0px,
+      color-mix(in srgb, var(--color-console) 5%, transparent) 2px,
       transparent 2px,
       transparent 4px
     );
@@ -414,7 +421,7 @@
 }
 
 @utility console-glow {
-  @apply text-[#00ff99] [text-shadow:0_0_5px_#00ff99,0_0_15px_#00ff99,0_0_30px_#00ff99];
+  @apply text-console [text-shadow:0_0_5px_var(--color-console),0_0_15px_var(--color-console),0_0_30px_var(--color-console)];
 }
 
 /* @utility star {

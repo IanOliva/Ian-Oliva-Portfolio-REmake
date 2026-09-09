@@ -67,7 +67,7 @@ const DecodeWord = ({
   }, [text, speed, delay, loop, pauseBetween, onComplete]);
 
   return (
-    <p className="font-console text-[#00ff99] [text-shadow:0_0_5px_#00ff99,0_0_15px_#00ff99,0_0_30px_#00ff99] inline-block text-2xl md:text-3xl">
+    <p className="font-console console-glow inline-block text-2xl md:text-3xl">
       {displayText.map((c, i) => (
         <span key={i}>{c}</span>
       ))}

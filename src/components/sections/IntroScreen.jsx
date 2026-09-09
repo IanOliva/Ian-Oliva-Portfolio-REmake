@@ -18,7 +18,7 @@ const IntroScreen = ({ onContinue }) => {
     <div className="fixed inset-0 z-[999] bg-black text-white flex flex-col items-center justify-center">
       <LightRays
         raysOrigin="left"
-        raysColor="#ff0000"
+        raysColor="#b00020"
         raysSpeed={1.5}
         lightSpread={1}
         fadeDistance={2}
@@ -37,7 +37,7 @@ const IntroScreen = ({ onContinue }) => {
         <button
           onClick={handleClick}
           disabled={loading}
-          className="cursor-target px-6 py-3 mt-6 bg-primary hover:bg-red-800 text-white font-typewriter rounded-md shadow-lg tracking-wider transition-all duration-300 animate-pulse"
+          className="cursor-target px-6 py-3 mt-6 bg-primary hover:bg-primary/80 text-white font-typewriter rounded-md shadow-lg tracking-wider transition-all duration-300 animate-pulse"
         >
           {loading ? (
             <>
