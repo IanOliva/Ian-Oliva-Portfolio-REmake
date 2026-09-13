@@ -14,7 +14,7 @@ const ComputerModel = () => {
   return (
     <primitive
       object={scene}
-      scale={1.5}
+      scale={2}
       rotation={[0, -1.5, 0]}
     />
   );

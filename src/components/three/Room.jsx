@@ -1,8 +1,9 @@
 import Floor from "./room/floor/Floor";
 import Wall from "./room/walls/Wall";
+import Ceiling from "./room/ceiling/Ceiling";
 import Computer from "./room/computer/Computer";
 import FilingCabinet from "./room/file cabinet/FilingCabinet";
-import InvestigationBoard from "./room/board/InvestigationBoard";
+import Board from "./room/board/Board";
 import Telephone from "./room/phone/Telephone";
 import Door from "./room/door/Door";
 import RoomLights from "./room/RoomLights";
@@ -31,18 +32,14 @@ const Room = () => {
         size={[10, 5]}
       />
 
-      <Wall
-        position={[0, 5, 0]}
-        rotation={[Math.PI / 2, 0, 0]}
-        size={[10, 10]}
-      />
+      <Ceiling/>
 
       <CeilingLamp position={[0, 4.95, 0.5]} />
 
       {/* Objetos interactivos */}
       <Computer />
       <FilingCabinet />
-      <InvestigationBoard />
+      <Board />
       <Telephone />
       <Door />
     </group>

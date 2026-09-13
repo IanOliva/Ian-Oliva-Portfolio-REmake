@@ -8,7 +8,7 @@ const Door = () => {
   return (
     <InteractiveObject
       id="links"
-      position={[4.85, 0, 0]}
+      position={[4.95, 0, 3.5]}
       label="ABRIR PUERTA"
       hitbox={[2, 4, 0.8]}
       onInteract={() => openSection("links")}

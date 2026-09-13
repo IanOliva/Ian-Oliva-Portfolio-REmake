@@ -8,7 +8,7 @@ const Computer = () => {
   return (
     <InteractiveObject
       id="hero"
-      position={[1.5,0, -4.5]}
+      position={[2,0, -4.5]}
       label="ACCEDER AL TERMINAL"
       hitbox={[1.8, 1.8, 1.2]}
       onInteract={() => openSection("hero")}

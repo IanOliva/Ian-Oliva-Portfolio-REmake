@@ -13,7 +13,7 @@ const FloorModel = () => {
   return (
     <primitive
       object={scene}
-      scale={[2.5,1.5,1]}
+      scale={[2.5,1.8,1]}
       position={[-5, 0, -6]}
       rotation={[Math.PI / 2, 0, 0]}
       receiveShadow
