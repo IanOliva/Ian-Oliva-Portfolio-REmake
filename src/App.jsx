@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import { initGA } from './utils/Analitics';
 import { usePageTracking } from './hooks/usePageTracking';
+import RoomPreview from "./pages/RoomPreview";
 
 // Ruta de prueba aislada (no linkeada desde la navegación real) para
 // validar el pasillo 3D scroll-driven — ver src/pages/CorridorPreview.jsx
@@ -24,6 +25,7 @@ function AppRoutes() {
           </Suspense>
         }
       />
+      <Route path="/room-preview" element={<RoomPreview />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
