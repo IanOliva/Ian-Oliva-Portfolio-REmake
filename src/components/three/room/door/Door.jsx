@@ -3,7 +3,7 @@ import { usePortfolio } from "@/context/PortfolioContext";
 import DoorModel from "./DoorModel";
 
 const Door = () => {
-  const { openSection } = usePortfolio();
+  const { navigateToObject } = usePortfolio();
 
   return (
     <InteractiveObject
@@ -11,7 +11,7 @@ const Door = () => {
       position={[4.95, 0, 3.5]}
       label="ABRIR PUERTA"
       hitbox={[2, 4, 0.8]}
-      onInteract={() => openSection("links")}
+      onInteract={() => navigateToObject("links")}
     >
     <DoorModel />
     </InteractiveObject>

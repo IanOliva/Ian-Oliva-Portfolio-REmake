@@ -15,7 +15,6 @@ const BoardModel = () => {
     <primitive
       object={scene}
       scale={2.9}
-      rotation={[0, -1.57, 0]}
     />
   );
 };

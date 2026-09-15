@@ -2,8 +2,9 @@ import { useEffect, useRef } from "react";
 import { usePortfolio } from "@/context/PortfolioContext";
 
 const InteractiveObject = ({
-  children,
+   children,
   position = [0, 0, 0],
+  rotation = [0, 0, 0],
   id,
   label = "EXAMINAR",
   onInteract,
@@ -24,7 +25,7 @@ const InteractiveObject = ({
       label,
     });
 
-    document.body.style.cursor = "pointer";
+    
 
     // Flash inicial
     flashRef.current = 1;
@@ -35,7 +36,7 @@ const InteractiveObject = ({
 
     setHoveredObject(null);
 
-    document.body.style.cursor = "default";
+   
   };
 
   const handleClick = (event) => {
@@ -87,7 +88,7 @@ const InteractiveObject = ({
   }, [isHovered]);
 
   return (
-    <group position={position}>
+    <group position={position} rotation={rotation}>
       {/* Modelo visual */}
       <group
         ref={visualRef}

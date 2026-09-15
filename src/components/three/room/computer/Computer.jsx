@@ -3,7 +3,7 @@ import { usePortfolio } from "@/context/PortfolioContext";
 import ComputerModel from "./ComputerModel";
 
 const Computer = () => {
-  const { openSection } = usePortfolio();
+  const { navigateToObject } = usePortfolio();
 
   return (
     <InteractiveObject
@@ -11,7 +11,7 @@ const Computer = () => {
       position={[2,0, -4.5]}
       label="ACCEDER AL TERMINAL"
       hitbox={[1.8, 1.8, 1.2]}
-      onInteract={() => openSection("hero")}
+      onInteract={() => navigateToObject("hero")}
     >
       <ComputerModel />
     </InteractiveObject>

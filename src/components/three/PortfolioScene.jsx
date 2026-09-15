@@ -3,10 +3,13 @@ import { Suspense } from "react";
 import Room from "./Room";
 import CameraController from "./CameraController";
 import InteractionPrompt from "../ui/InteractionPrompt";
+import { RoomNavbar } from "@/components/ui/RoomNavbar";
+import TargetCursor from "@/components/misc/TargetCursor";
 import SectionModal from "../ui/SectionModal";
 
 const PortfolioScene = () => {
   return (
+    <>
     <div className="fixed inset-0 h-full w-full bg-black">
       <Canvas shadows
         camera={{
@@ -31,9 +34,12 @@ const PortfolioScene = () => {
 
       
        {/* UI HTML por encima del Canvas */}
+      <RoomNavbar />
       <InteractionPrompt />
       <SectionModal />
     </div>
+      <TargetCursor spinDuration={10} hideDefaultCursor={true} />
+      </>
   );
 };
 

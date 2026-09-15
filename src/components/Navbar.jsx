@@ -2,7 +2,6 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import Hud from "./misc/healthHud.jsx";
-import { Slide } from "react-awesome-reveal";
 import ThemeToggle from "./misc/ThemeToggle.jsx";
 
 const navItems = [

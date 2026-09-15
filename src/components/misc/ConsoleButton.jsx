@@ -3,7 +3,7 @@ import '../css/ConsoleButton.css'
 
 const ConsoleButton = ({text}) => {
   return (
-    <button class="button cursor-target font-console">{text}</button>
+    <button className="button cursor-target font-console">{text}</button>
   )
 }
 

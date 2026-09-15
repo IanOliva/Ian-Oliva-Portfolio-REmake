@@ -1,9 +1,9 @@
 import InteractiveObject from "../../interactables/InteractableObject";
 import { usePortfolio } from "@/context/PortfolioContext";
-import TelephoneModel from "./telephoneModel";
+import TelephoneModel from "./TelephoneModel";
 
 const Telephone = () => {
-  const { openSection } = usePortfolio();
+  const { navigateToObject } = usePortfolio();
 
   return (
     <InteractiveObject
@@ -11,7 +11,7 @@ const Telephone = () => {
       position={[4.9, 3, 2]}
       label="LLAMAR CONTACTO"
       hitbox={[1.5, 1.2, 1.2]}
-      onInteract={() => openSection("contact")}
+      onInteract={() => navigateToObject("contact")}
     >
       <TelephoneModel />
     </InteractiveObject>

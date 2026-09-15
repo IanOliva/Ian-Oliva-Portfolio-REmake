@@ -4,11 +4,11 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import { initGA } from './utils/Analitics';
 import { usePageTracking } from './hooks/usePageTracking';
-import RoomPreview from "./pages/RoomPreview";
 
-// Ruta de prueba aislada (no linkeada desde la navegación real) para
-// validar el pasillo 3D scroll-driven — ver src/pages/CorridorPreview.jsx
-const CorridorPreview = lazy(() => import('./pages/CorridorPreview'));
+// Aislado en su propio chunk: RoomPreview carga three.js + @react-three/fiber
+// + @react-three/drei + los modelos 3D. Nada de esto debe descargarse para
+// nadie que visite el sitio real en "/".
+const RoomPreview = lazy(() => import("./pages/RoomPreview"));
 
 // Componente interno que usa el hook
 function AppRoutes() {
@@ -18,14 +18,13 @@ function AppRoutes() {
     <Routes>
       <Route index element={<Home/>}/>
       <Route
-        path="/corridor-preview"
+        path="/room-preview"
         element={
           <Suspense fallback={null}>
-            <CorridorPreview />
+            <RoomPreview />
           </Suspense>
         }
       />
-      <Route path="/room-preview" element={<RoomPreview />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
