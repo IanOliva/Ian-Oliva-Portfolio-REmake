@@ -34,4 +34,14 @@ export default {
       "No se pudo cargar el entorno. Revisá tu conexión y volvé a intentar.",
     retry: "Recargar",
   },
+   // Contenido de cada sección. Las llaves {así} marcan texto resaltado.
+  content: {
+    hero: {
+      file: "EXPEDIENTE CLASIFICADO",
+      subject: "SUJETO",
+      dossier:
+        "{[}Archivo clasificado{]}: Desarrollador especializado en {desarrollo web}. Estado: {activo}. Misión: crear experiencias digitales intuitivas y eficientes. Visto por última vez en instalaciones de formación avanzadas de {Ingeniería de Software}.",
+      cta: "Proyectos",
+    },
+  },
 };

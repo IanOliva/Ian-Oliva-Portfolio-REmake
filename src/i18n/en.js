@@ -33,4 +33,14 @@ export default {
     error: "The room could not be loaded. Check your connection and try again.",
     retry: "Reload",
   },
+   // Section content. Curly braces {like this} mark highlighted text.
+  content: {
+    hero: {
+      file: "CLASSIFIED FILE",
+      subject: "SUBJECT",
+      dossier:
+        "{[}Classified file{]}: Developer specialized in {web development}. Status: {active}. Mission: build intuitive, efficient digital experiences. Last seen at advanced training facilities for {Software Engineering}.",
+      cta: "Projects",
+    },
+  },
 };

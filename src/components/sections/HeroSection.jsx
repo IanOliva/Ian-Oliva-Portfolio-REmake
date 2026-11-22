@@ -2,10 +2,14 @@ import React from "react";
 import { ChevronDown } from "lucide-react";
 import { Section } from "@/components/Section";
 import ConsoleButton from "@/components/misc/ConsoleButton";
+import HighlightedText from "@/components/misc/HighlightedText";
+import { useLanguage } from "@/context/useLanguage";
 
 import Textra from "react-textra";
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+
   return (
     <Section id="hero" className="relative overflow-hidden text-center">
       {/* Overlay CRT Scanlines */}
@@ -14,29 +18,23 @@ const HeroSection = () => {
       <div className="flex flex-col justify-center space-y-6">
         {/* Nombre */}
         <h1 className="text-4xl md:text-8xl font-resident tracking-wider text-foreground text-glow animate-fade-in text-left">
-          EXPEDIENTE CLASIFICADO
+          {t("content.hero.file")}
         </h1>
         <h2 className="text-4xl md:text-6xl font-resident tracking-wider text-foreground text-glow animate-fade-in text-left flex items-center">
           <div>
-            SUJETO <span className="text-primary">I</span>AN <span className="text-primary">O</span>LIVA
+            {t("content.hero.subject")} <span className="text-primary">I</span>
+            AN <span className="text-primary">O</span>LIVA
           </div>
-           <h5 className="md:text-4xl">(ID: IO-DEV-05-06)</h5>
+          <h5 className="md:text-4xl">(ID: IO-DEV-05-06)</h5>
         </h2>
-
 
         {/* Párrafo estilo dossier */}
         <p className="max-w-3xl text-left font-mono text-lg md:text-lg text-muted-foreground opacity-0 animate-fade-in-delay-3 ">
-          <span className="console-glow">[</span>Archivo clasificado
-          <span className="console-glow">]</span> : Desarrollador especializado
-          en <span className="console-glow">desarrollo web</span>. Estado:{" "}
-          <span className="console-glow">activo</span> Misión: Crear
-          experiencias digitales intuitivas y eficientes. Visto por última vez
-          en instalaciones de formación avanzadas de <span className="console-glow">Ingeniería de Software.</span>
+           <HighlightedText text={t("content.hero.dossier")} />
         </p>
         <div className="mx-auto">
           <a href="#about">
-
-          <ConsoleButton text="Proyectos" />
+            <ConsoleButton text={t("content.hero.cta")} />
           </a>
         </div>
       </div>
