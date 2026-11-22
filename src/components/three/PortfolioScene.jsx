@@ -5,6 +5,7 @@ import CameraController from "./CameraController";
 import InteractionPrompt from "../ui/InteractionPrompt";
 import { RoomNavbar } from "@/components/ui/RoomNavbar";
 import TargetCursor from "@/components/misc/TargetCursor";
+import LanguageSelector from "@/components/ui/LanguageSelector";
 import SectionModal from "../ui/SectionModal";
 
 const PortfolioScene = () => {
@@ -35,6 +36,7 @@ const PortfolioScene = () => {
       
        {/* UI HTML por encima del Canvas */}
       <RoomNavbar />
+      <LanguageSelector />
       <InteractionPrompt />
       <SectionModal />
     </div>

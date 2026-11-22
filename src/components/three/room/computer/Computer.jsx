@@ -9,7 +9,6 @@ const Computer = () => {
     <InteractiveObject
       id="hero"
       position={[2,0, -4.5]}
-      label="ACCEDER AL TERMINAL"
       hitbox={[1.8, 1.8, 1.2]}
       onInteract={() => navigateToObject("hero")}
     >

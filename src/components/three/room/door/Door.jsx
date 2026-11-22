@@ -9,7 +9,6 @@ const Door = () => {
     <InteractiveObject
       id="links"
       position={[4.95, 0, 3.5]}
-      label="ABRIR PUERTA"
       hitbox={[2, 4, 0.8]}
       onInteract={() => navigateToObject("links")}
     >

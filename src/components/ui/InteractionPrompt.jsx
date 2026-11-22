@@ -1,7 +1,10 @@
 import { usePortfolio } from "@/context/PortfolioContext";
+import { useLanguage } from "@/context/useLanguage";
 
 const InteractionPrompt = () => {
   const { hoveredObject } = usePortfolio();
+  const { t } = useLanguage();
+
 
   if (!hoveredObject) {
     return null;
@@ -12,11 +15,11 @@ const InteractionPrompt = () => {
       <div className="border border-red-900/70 bg-black/85 px-6 py-3 shadow-lg backdrop-blur-sm">
         <div className="flex items-center gap-3">
           <span className="font-mono text-xs text-red-500">
-            [ LMB ]
+            {t("prompt.action")}  
           </span>
 
           <span className="font-mono text-xs tracking-[0.2em] text-white">
-            {hoveredObject.label}
+            {t(`objects.${hoveredObject.id}`)}  
           </span>
         </div>
       </div>

@@ -18,7 +18,6 @@ const Board = () => {
       id="about"
       position={[4.85, 2.8, -1]}
       rotation={[0, -Math.PI / 2, 0]}
-      label="EXAMINAR ARCHIVO"
       hitbox={[3, 2.2, 0.3]}
       onInteract={() => navigateToObject("about")}
     >

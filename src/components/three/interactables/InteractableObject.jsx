@@ -6,7 +6,6 @@ const InteractiveObject = ({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
   id,
-  label = "EXAMINAR",
   onInteract,
   hitbox = [1, 1, 1],
 }) => {
@@ -22,7 +21,6 @@ const InteractiveObject = ({
 
     setHoveredObject({
       id,
-      label,
     });
 
     

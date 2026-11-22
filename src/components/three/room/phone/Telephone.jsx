@@ -9,7 +9,6 @@ const Telephone = () => {
     <InteractiveObject
       id="contact"
       position={[4.9, 3, 2]}
-      label="LLAMAR CONTACTO"
       hitbox={[1.5, 1.2, 1.2]}
       onInteract={() => navigateToObject("contact")}
     >

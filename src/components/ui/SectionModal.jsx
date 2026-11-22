@@ -6,17 +6,12 @@ import HeroSection from "@/components/sections/HeroSection";
 import TechnicalProfile from "@/components/sections/TechnicalProfile";
 import ContactSection from "@/components/sections/ContactSection";
 import SocialLinks from "@/components/sections/SocialLinks";
+import { useLanguage } from "@/context/useLanguage";
 
 const SectionModal = () => {
   const { activeSection, closeSection } = usePortfolio();
-
-  const sectionTitles = {
-    hero: "SYSTEM PROFILE",
-    about: "PERSONAL FILE",
-    skills: "TECHNICAL ANALYSIS",
-    contact: "COMMUNICATION TERMINAL",
-    links: "EXTERNAL NETWORK",
-  };
+  const { t } = useLanguage();
+  
 
   useEffect(() => {
     if (!activeSection) {
@@ -70,7 +65,7 @@ const SectionModal = () => {
             </p>
 
             <h2 className="mt-1 font-mono text-sm tracking-[0.25em] text-white">
-              {sectionTitles[activeSection] || activeSection.toUpperCase()}
+              {t(`sections.${activeSection}`) || activeSection.toUpperCase()}
             </h2>
           </div>
 
@@ -79,7 +74,7 @@ const SectionModal = () => {
             onClick={closeSection}
             className="border border-red-900/60 px-3 py-2 font-mono text-xs text-red-500 transition hover:bg-red-950/40 hover:text-white"
           >
-            [ ESC ] CLOSE
+            {t("modal.close")} (Esc)
           </button>
         </div>
 

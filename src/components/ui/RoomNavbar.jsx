@@ -3,16 +3,18 @@ import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import Hud from "@/components/misc/healthHud.jsx";
 import ThemeToggle from "@/components/misc/ThemeToggle.jsx";
+import { useLanguage } from "@/context/useLanguage";
 
 const navItems = [
-  { name: "Inicio", href: "#hero" },
-  { name: "Sobre mi", href: "#about" },
-  { name: "Proyectos", href: "#projects" },
-  { name: "Contacto", href: "#contact" },
+ { key: "hero", href: "#hero" },
+ { key: "about", href: "#about" },
+ { key: "projects", href: "#projects" },
+ { key: "contact", href: "#contact" },
 ];
 
 export const RoomNavbar = () => {
   const [activeSection, setActiveSection] = useState("#hero");
+  const { t } = useLanguage();
 
   // Sonido al click de links
   useEffect(() => {
@@ -87,7 +89,7 @@ export const RoomNavbar = () => {
             <a
               key={key}
               href={item.href}
-              data-text={item.name}
+              data-text={t(`nav.${item.key}`)}
               className={cn(
                 "transition-colors duration-300 cursor-target",
                 activeSection === item.href
@@ -98,7 +100,7 @@ export const RoomNavbar = () => {
                 setActiveSection(item.href);
               }}
             >
-              {item.name}
+              {t(`nav.${item.key}`)}
             </a>
           ))}
 

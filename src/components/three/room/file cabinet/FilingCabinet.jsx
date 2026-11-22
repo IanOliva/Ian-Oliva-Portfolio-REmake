@@ -7,9 +7,8 @@ const FilingCabinet = () => {
 
   return (
     <InteractiveObject
-      id="about"
+      id="projects"
       position={[-4.5, 0, -4]}
-      label="EXAMINAR EXPEDIENTE"
       hitbox={[1.5, 1.5, 0.2]}
       onInteract={() => navigateToObject("projects")}
     >

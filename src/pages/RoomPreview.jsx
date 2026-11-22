@@ -1,11 +1,14 @@
 import PortfolioScene from "@/components/three/PortfolioScene";
 import { PortfolioProvider } from "@/context/PortfolioContext";
+import { LanguageProvider }  from "@/context/LanguageProvider";
 
 const RoomPreview = () => {
   return (
-    <PortfolioProvider>
-      <PortfolioScene />
-    </PortfolioProvider>
+    <LanguageProvider>
+      <PortfolioProvider>
+        <PortfolioScene />
+      </PortfolioProvider>
+    </LanguageProvider>
   );
 };
 
