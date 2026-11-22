@@ -42,5 +42,16 @@ export default {
         "{[}Classified file{]}: Developer specialized in {web development}. Status: {active}. Mission: build intuitive, efficient digital experiences. Last seen at advanced training facilities for {Software Engineering}.",
       cta: "Projects",
     },
+       about: {
+      title: "About me",
+      profile:
+        "Profile focused on modern [web development]. Shows the ability to turn ideas into stable, usable prototypes. Keeps a continuous routine of improvement, learning and process refinement.",
+      records:
+        "Internal records indicate that the subject employs [advanced technologies].",
+      contactCta: "Contact me",
+      cvCta: "View CV",
+      technologies: "Technologies",
+    },
   },
+   
 };

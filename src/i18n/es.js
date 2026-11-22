@@ -43,5 +43,16 @@ export default {
         "{[}Archivo clasificado{]}: Desarrollador especializado en {desarrollo web}. Estado: {activo}. Misión: crear experiencias digitales intuitivas y eficientes. Visto por última vez en instalaciones de formación avanzadas de {Ingeniería de Software}.",
       cta: "Proyectos",
     },
+     about: {
+      title: "Sobre mi",
+      profile:
+        "Perfil orientado a [desarrollo web] moderno. Presenta habilidad para convertir ideas en prototipos estables y usables. Mantiene rutina continua de mejora, aprendizaje y refinamiento de procesos.",
+      records:
+        "Registros internos indican que el sujeto emplea [tecnologías avanzadas].",
+      contactCta: "Contáctame",
+      cvCta: "Ver CV",
+      technologies: "Tecnologías",
+    },
   },
+     
 };

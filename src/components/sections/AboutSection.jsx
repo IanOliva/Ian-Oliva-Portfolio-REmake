@@ -19,8 +19,11 @@ import DecodeWord from "../misc/DecodeWord";
 import ConsoleRadar from "../misc/ConsoleRadar";
 import ConsoleBackground from "../misc/ConsoleBackround";
 import ConsoleButton from "../misc/ConsoleButton";
+import HighlightedInitials from "../misc/HighlightedInitials";
+import { useLanguage } from "@/context/useLanguage";
 
 const AboutMe = () => {
+  const { t } = useLanguage();
 
   return (
     <Section id="about">
@@ -29,8 +32,7 @@ const AboutMe = () => {
 
       <div className="flex items-center justify-between mb-10">
         <h2 className="text-4xl md:text-8xl font-resident tracking-wide text-left text-glow">
-          <span className="text-primary">S</span>obre{" "}
-          <span className="text-primary">m</span>i
+          <HighlightedInitials text={t("content.about.title")} />
         </h2>
         <div className="p-3 rounded-full bg-primary/10">
           <Code className="h-8 w-8 text-primary" />
@@ -43,27 +45,21 @@ const AboutMe = () => {
             IAN OLIVA IO-DEV-05-06.
           </h3>
           <div className="text-muted-foreground font-mono">
-            <p>
-              Perfil orientado a [desarrollo web]
-              moderno. Presenta habilidad para convertir ideas en prototipos
-              estables y usables. Mantiene rutina continua de mejora,
-              aprendizaje y refinamiento de procesos.
-            </p>
-            <p>
-              Registros internos indican que el sujeto emplea [tecnologías avanzadas]
-            </p>
+           <p>{t("content.about.profile")}</p>
+            <p>{t("content.about.records")}</p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
             <a href="#contact">
-              <ConsoleButton icon={<Briefcase />} text="Contactame" />
+              <ConsoleButton icon={<Briefcase />} text={t("content.about.contactCta")} />
+
             </a>
             <a
               href="https://docs.google.com/document/d/1nYjp6P7Eiq2jIu5ZYsvs-N0AR6NeOsKLFqLqaFwocdk/edit?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <ConsoleButton icon={<User />} text="Ver CV" />
+              <ConsoleButton icon={<User />} text={t("content.about.cvCta")} />
             </a>
           </div>
         </div>
@@ -72,7 +68,7 @@ const AboutMe = () => {
           {/* Encabezado */}
           <div className="px-6 pt-6 pb-2">
             <h4 className="text-2xl font-typewriter tracking-wide text-center text-primary">
-              <DecodeWord text="Tecnologías" speed={70} delay={40} />
+              <DecodeWord text={t("content.about.technologies")} speed={70} delay={40} />
             </h4>
           </div>
 
