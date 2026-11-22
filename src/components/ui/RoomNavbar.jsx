@@ -1,59 +1,74 @@
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Hud from "@/components/misc/healthHud.jsx";
 import ThemeToggle from "@/components/misc/ThemeToggle.jsx";
 import { useLanguage } from "@/context/useLanguage";
+import { usePortfolio } from "@/context/PortfolioContext";
 
-const navItems = [
- { key: "hero", href: "#hero" },
- { key: "about", href: "#about" },
- { key: "projects", href: "#projects" },
- { key: "contact", href: "#contact" },
-];
+// Cada ítem usa el mismo id que el objeto 3D al que lleva.
+const navItems = ["hero", "about", "projects", "contact", "links"];
 
 export const RoomNavbar = () => {
-  const [activeSection, setActiveSection] = useState("#hero");
   const { t } = useLanguage();
+  const {
+    hoveredObject,
+    setHoveredObject,
+    navigateToObject,
+    isCameraMoving,
+    isReturning,
+    activeSection,
+  } = usePortfolio();
 
-  // Sonido al click de links
+  const clickSound = useRef(null);
+
+  // No se puede viajar a otro objeto mientras la cámara se mueve o hay algo abierto.
+  const isBusy = isCameraMoving || isReturning || Boolean(activeSection);
+
   useEffect(() => {
-    const linkSound = new Audio("/sounds/inventory.mp3");
-    linkSound.volume = 0.1;
-    const handleLinkClick = () => {
-      linkSound.currentTime = 0;
-      linkSound.play();
-    };
-    document.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", handleLinkClick);
-    });
-    return () => {
-      document.querySelectorAll("a").forEach((link) => {
-        link.removeEventListener("click", handleLinkClick);
-      });
-    };
+    const sound = new Audio("/sounds/inventory.mp3");
+    sound.volume = 0.1;
+    clickSound.current = sound;
   }, []);
 
-  // IntersectionObserver para marcar sección activa
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(`#${entry.target.id}`);
-          }
-        });
-      },
-      { threshold: 0.6 }, // 60% visible
-    );
+  // El sonido es un adorno: si el navegador lo bloquea o falla, no debe
+  // impedir que el botón haga su trabajo.
+  const playClickSound = () => {
+    const sound = clickSound.current;
+    if (!sound) return;
 
-    navItems.forEach((item) => {
-      const section = document.querySelector(item.href);
-      if (section) observer.observe(section);
-    });
+    try {
+      sound.currentTime = 0;
+      Promise.resolve(sound.play()).catch(() => {});
+    } catch {
+      // Se ignora el error de audio a propósito.
+    }
+  };
 
-    return () => observer.disconnect();
-  }, []);
+  const handleSelect = (id) => {
+    if (isBusy) return;
+
+    navigateToObject(id);
+    playClickSound();
+  };
+
+  // Resalta el objeto 3D correspondiente, igual que si se lo apuntara con el mouse.
+  const handleMouseEnter = (id) => {
+    if (isBusy) return;
+
+    setHoveredObject({ id, via: "pointer" });
+  };
+
+  // Solo con foco de teclado: un clic con el mouse ya se resolvió en handleMouseEnter.
+  const handleFocus = (event, id) => {
+    if (isBusy || !event.currentTarget.matches(":focus-visible")) return;
+
+    setHoveredObject({ id, via: "keyboard" });
+  };
+
+  // Solo limpia si el resaltado sigue siendo de este ítem.
+  const handleLeave = (id) => {
+    setHoveredObject((current) => (current?.id === id ? null : current));
+  };
 
   return (
     <>
@@ -72,40 +87,42 @@ export const RoomNavbar = () => {
         <ThemeToggle />
 
         {/* Logo / Nombre */}
-        <a
-          className="font-bold text-primary"
-          href="#hero"
-          onClick={() => {
-            setActiveSection("#hero");
-          }}
-        >
+        <p className="font-bold text-primary">
           <span className="text-glow text-foreground">Ian Oliva</span>
           <span className="block text-sm text-primary">Portfolio</span>
-        </a>
+        </p>
 
-        {/* Links de navegación */}
-        <nav className="flex flex-row  gap-6">
-          {navItems.map((item, key) => (
-            <a
-              key={key}
-              href={item.href}
-              data-text={t(`nav.${item.key}`)}
-              className={cn(
-                "transition-colors duration-300 cursor-target",
-                activeSection === item.href
-                  ? "text-primary link-animated"
-                  : "text-foreground/80 hover:text-primary hover:link-animated",
-              )}
-              onClick={() => {
-                setActiveSection(item.href);
-              }}
-            >
-              {t(`nav.${item.key}`)}
-            </a>
-          ))}
+        {/* Un botón por objeto de la habitación */}
+        <nav aria-label={t("nav.label")} className="flex flex-row gap-6">
+          {navItems.map((id) => {
+            const isHighlighted = hoveredObject?.id === id;
 
+            return (
+              <button
+                key={id}
+                type="button"
+                data-text={t(`nav.${id}`)}
+                aria-disabled={isBusy}
+                onClick={() => handleSelect(id)}
+                onMouseEnter={() => handleMouseEnter(id)}
+                onMouseLeave={() => handleLeave(id)}
+                onFocus={(event) => handleFocus(event, id)}
+                onBlur={() => handleLeave(id)}
+                className={cn(
+                  "cursor-target transition-colors duration-300",
+                  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-500",
+                  "aria-disabled:opacity-50",
+                  isHighlighted
+                    ? "text-primary link-animated"
+                    : "text-foreground/80 hover:text-primary hover:link-animated",
+                )}
+              >
+                {t(`nav.${id}`)}
+              </button>
+            );
+          })}
         </nav>
-          {/* <Hud /> */}
+        {/* <Hud /> */}
       </aside>
     </>
   );

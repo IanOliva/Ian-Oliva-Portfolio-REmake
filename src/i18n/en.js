@@ -1,6 +1,13 @@
 export default {
   language: { label: "Language" },
-  nav: { hero: "Home", about: "About me", projects: "Projects", contact: "Contact" },
+  nav: {
+    label: "Sections",
+    hero: "Home",
+    about: "About me",
+    projects: "Projects",
+    contact: "Contact",
+    links: "Links",
+  },
 
   objects: {
     hero: "View my introduction",
@@ -18,9 +25,9 @@ export default {
     contact: "Contact",
     links: "Links",
   },
-  prompt: { action: "Click" },
+  prompt: { action: "Click", keyboardAction: "Enter" },
   modal: { close: "Close" },
-   loading: {
+  loading: {
     label: "Loading the room",
     hint: "The first visit takes longer because the 3D models are downloaded.",
     error: "The room could not be loaded. Check your connection and try again.",

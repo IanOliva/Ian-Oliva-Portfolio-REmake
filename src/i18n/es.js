@@ -1,6 +1,13 @@
 export default {
   language: { label: "Idioma" },
-  nav: { hero: "Inicio", about: "Sobre mí", projects: "Proyectos", contact: "Contacto" },
+  nav: {
+    label: "Secciones",
+    hero: "Inicio",
+    about: "Sobre mí",
+    projects: "Proyectos",
+    contact: "Contacto",
+    links: "Enlaces", 
+  },
   // Texto del aviso al apuntar un objeto. La clave es el id del objeto.
   objects: {
     hero: "Ver mi presentación",
@@ -18,12 +25,13 @@ export default {
     contact: "Contacto",
     links: "Enlaces",
   },
-  prompt: { action: "Clic" },
+  prompt: { action: "Clic", keyboardAction: "Enter",},
   modal: { close: "Cerrar" },
   loading: {
     label: "Cargando el entorno",
     hint: "La primera vez tarda más porque se descargan los modelos 3D.",
-    error: "No se pudo cargar el entorno. Revisá tu conexión y volvé a intentar.",
+    error:
+      "No se pudo cargar el entorno. Revisá tu conexión y volvé a intentar.",
     retry: "Recargar",
   },
 };

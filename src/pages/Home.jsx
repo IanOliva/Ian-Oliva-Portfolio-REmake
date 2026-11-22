@@ -2,7 +2,7 @@ import React, { useEffect, useState, lazy, Suspense } from "react";
 import ThemeToggle from "@/components/misc/ThemeToggle";
 import GrainBackground from "@/components/GrainBackground";
 import TargetCursor from "@/components/misc/TargetCursor";
-import { Navbar } from "@/components/Navbar";
+import { RoomNavbar } from "@/components/RoomNavbar";
 import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import Footer from "@/components/sections/Footer";

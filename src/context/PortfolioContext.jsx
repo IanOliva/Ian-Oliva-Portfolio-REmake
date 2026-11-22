@@ -23,6 +23,8 @@ export const PortfolioProvider = ({ children }) => {
   };
 
   const navigateToObject = (section) => {
+    // Se ignora el pedido si ya hay un viaje en curso o una sección abierta.
+    if (isCameraMoving || isReturning || activeSection) return;
     setCameraTarget({
       section,
     });

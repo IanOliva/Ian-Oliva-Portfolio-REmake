@@ -5,7 +5,6 @@ const InteractionPrompt = () => {
   const { hoveredObject } = usePortfolio();
   const { t } = useLanguage();
 
-
   if (!hoveredObject) {
     return null;
   }
@@ -15,11 +14,15 @@ const InteractionPrompt = () => {
       <div className="border border-red-900/70 bg-black/85 px-6 py-3 shadow-lg backdrop-blur-sm">
         <div className="flex items-center gap-3">
           <span className="font-mono text-xs text-red-500">
-            {t("prompt.action")}  
+            {t(
+              hoveredObject.via === "keyboard"
+                ? "prompt.keyboardAction"
+                : "prompt.action",
+            )}
           </span>
 
           <span className="font-mono text-xs tracking-[0.2em] text-white">
-            {t(`objects.${hoveredObject.id}`)}  
+            {t(`objects.${hoveredObject.id}`)}
           </span>
         </div>
       </div>
