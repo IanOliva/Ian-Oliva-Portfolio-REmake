@@ -8,7 +8,7 @@ const LanguageSelector = () => {
     <div
       role="group"
       aria-label={t("language.label")}
-      className="fixed right-4 top-4 z-50 flex border border-red-900/60 bg-black/80 font-mono text-xs backdrop-blur-sm"
+      className="fixed right-4 top-4 z-[60] flex border border-red-900/60 bg-black/80 font-mono text-xs backdrop-blur-sm"
     >
       {languages.map((code) => (
         <button

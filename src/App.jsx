@@ -1,9 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useEffect, lazy, Suspense } from 'react';
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
-import { initGA } from './utils/Analitics';
-import { usePageTracking } from './hooks/usePageTracking';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect, lazy, Suspense } from "react";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import { initGA } from "./utils/Analitics";
+import { usePageTracking } from "./hooks/usePageTracking";
+import { LanguageProvider } from "./context/LanguageProvider";
+import RouteLoading from "./components/ui/RouteLoading";
 
 // Aislado en su propio chunk: RoomPreview carga three.js + @react-three/fiber
 // + @react-three/drei + los modelos 3D. Nada de esto debe descargarse para
@@ -16,11 +18,17 @@ function AppRoutes() {
 
   return (
     <Routes>
-      <Route index element={<Home/>}/>
+      <Route index element={<Home />} />
       <Route
         path="/room-preview"
         element={
-          <Suspense fallback={null}>
+          <Suspense
+            fallback={
+              <LanguageProvider>
+                <RouteLoading />
+              </LanguageProvider>
+            }
+          >
             <RoomPreview />
           </Suspense>
         }

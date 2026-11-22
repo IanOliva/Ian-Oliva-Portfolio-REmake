@@ -20,4 +20,10 @@ export default {
   },
   prompt: { action: "Click" },
   modal: { close: "Close" },
+   loading: {
+    label: "Loading the room",
+    hint: "The first visit takes longer because the 3D models are downloaded.",
+    error: "The room could not be loaded. Check your connection and try again.",
+    retry: "Reload",
+  },
 };

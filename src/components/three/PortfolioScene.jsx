@@ -6,6 +6,7 @@ import InteractionPrompt from "../ui/InteractionPrompt";
 import { RoomNavbar } from "@/components/ui/RoomNavbar";
 import TargetCursor from "@/components/misc/TargetCursor";
 import LanguageSelector from "@/components/ui/LanguageSelector";
+import LoadingScreen from "../ui/LoadingScreen";
 import SectionModal from "../ui/SectionModal";
 
 const PortfolioScene = () => {
@@ -35,6 +36,7 @@ const PortfolioScene = () => {
 
       
        {/* UI HTML por encima del Canvas */}
+      <LoadingScreen />
       <RoomNavbar />
       <LanguageSelector />
       <InteractionPrompt />

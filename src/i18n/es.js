@@ -20,4 +20,10 @@ export default {
   },
   prompt: { action: "Clic" },
   modal: { close: "Cerrar" },
+  loading: {
+    label: "Cargando el entorno",
+    hint: "La primera vez tarda más porque se descargan los modelos 3D.",
+    error: "No se pudo cargar el entorno. Revisá tu conexión y volvé a intentar.",
+    retry: "Recargar",
+  },
 };
