@@ -5,8 +5,8 @@ import { usePortfolio } from "@/context/PortfolioContext";
 
 const CAMERA_POSITIONS = {
   hero: {
-    position: [0.8, 2.6, -1.8],
-    target: [2, 1.2, -4.5],
+    position: [2, 3, -1.8],
+    target: [1, 1.2, -4.5],
   },
 
   projects: {
@@ -15,7 +15,7 @@ const CAMERA_POSITIONS = {
   },
 
   about: {
-    position: [2.8, 3.2, -0.2],
+    position: [2.2, 3.0, -1],
     target: [4.85, 2.8, -1],
   },
 
@@ -65,7 +65,7 @@ const CameraController = () => {
    * Posición inicial
    */
   useEffect(() => {
-    camera.position.set(-4, 4.5, 5);
+    camera.position.set(-4, 4.5, 4.5);
 
     camera.rotation.set(-0.35, -0.55, 0);
   }, [camera]);

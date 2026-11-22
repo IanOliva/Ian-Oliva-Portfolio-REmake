@@ -6,6 +6,9 @@ import BoardPhoto from "./BoardPhoto";
 import BoardLine from "./BoardLine";
 import BoardPin from "./BoardPin";
 import BoardPaper from "./BoardPaper";
+import BoardEvidence from "./BoardEvidence";
+import argentinaMap from "@/assets/textures/arg_map.webp";
+import cudiPolaroid from "@/assets/textures/board/cudi_polaroid.webp";
 
 const Board = () => {
   const { navigateToObject } = usePortfolio();
@@ -23,17 +26,14 @@ const Board = () => {
 
       <BoardPhoto />
 
-      {/* Hilos rojos */}
-      <BoardLine start={[0, 0, 0.2]} end={[-1.1, 0.7, 0.2]} curve={0.25} />
-      <BoardLine start={[0, 0, 0.2]} end={[1.1, 0.65, 0.2]} curve={-0.2} />
+      {/* <BoardLine start={[0, 0, 0.2]} end={[1.1, 0.65, 0.2]} curve={-0.2} />
       <BoardLine start={[0.1, -0.1, 0.2]} end={[1.15, -0.7, 0.2]} curve={0.2} />
       <BoardLine
-        start={[0, -0.1, 0.2]}
-        end={[-1.2, -0.65, 0.2]}
-        curve={-0.25}
-      />
+      start={[0, -0.1, 0.2]}
+      end={[-1.2, -0.65, 0.2]}
+      curve={-0.25}
+      /> */}
 
-      <BoardPin position={[-1.1, 0.7, 0.23]} />
 
       <BoardPin position={[1.1, 0.65, 0.23]} />
 
@@ -41,13 +41,25 @@ const Board = () => {
 
       <BoardPin position={[1.15, -0.7, 0.23]} />
 
-      <BoardPaper
-        position={[-1.1, 0.7, 0.21]}
+      <BoardLine start={[-0.1, 0.2, 0.12]} end={[-1.2, 0.7, 0.2]} curve={0.35} />
+      <BoardPin position={[-1.5, 1, 0.25]} />
+      <BoardEvidence
+        image={argentinaMap}
+        position={[-1.5, 0.7, 0]}
         rotation={[0, 0, -0.08]}
-        size={[0.75, 0.95]}
+        size={[0.8, 0.95]}
       />
 
-      <BoardPaper
+      <BoardLine start={[-1.2, 0.8, 0.2]} end={[-0.12, 0.65, 1.5]} curve={-0.25} />
+      <BoardPin position={[-0.2, 0.95, 0.7]} />
+      <BoardEvidence
+        image={cudiPolaroid}
+        position={[-0.3, 0.95, 0]}
+        rotation={[0, 0, 0.08]}
+        size={[0.5, 0.65]}
+      />
+
+      {/* <BoardPaper
         position={[1.1, 0.65, 0.21]}
         rotation={[0, 0, 0.06]}
         size={[0.75, 0.95]}
@@ -63,7 +75,7 @@ const Board = () => {
         position={[1.15, -0.7, 0.21]}
         rotation={[0, 0, -0.07]}
         size={[0.8, 0.9]}
-      />
+      /> */}
     </InteractiveObject>
   );
 };

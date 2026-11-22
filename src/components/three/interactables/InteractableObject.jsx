@@ -71,7 +71,7 @@ const InteractiveObject = ({
           materials.forEach((material) => {
             if (!material.emissive) return;
 
-            material.emissive.set("#5a0000");
+            material.emissive.set("#555454");
             material.emissiveIntensity = intensity;
           });
         });

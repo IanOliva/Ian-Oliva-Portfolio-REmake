@@ -1,34 +1,25 @@
-import * as THREE from "three";
+import { useGLTF } from "@react-three/drei";
+import boardPinModel from "@/assets/models/board_pin.glb";
 
 const BoardPin = ({
   position = [0, 0, 0],
+  rotation = [1, 0, 0],
+  scale = 6,
 }) => {
-  return (
-    <group position={position}>
-      {/* Cabeza de la chinche */}
-      <mesh castShadow>
-        <sphereGeometry args={[0.055, 16, 16]} />
-        <meshStandardMaterial
-          color="#8b0000"
-          roughness={0.35}
-          metalness={0.6}
-        />
-      </mesh>
+  // Carga el archivo .glb / .gltf desde la carpeta public
+  const { scene } = useGLTF(boardPinModel);
 
-      {/* Parte clavada en el tablero */}
-      <mesh
-        position={[0, 0, -0.045]}
-        rotation={[Math.PI / 2, 0, 0]}
-      >
-        <cylinderGeometry args={[0.018, 0.018, 0.10, 8]} />
-        <meshStandardMaterial
-          color="#333333"
-          roughness={0.5}
-          metalness={0.8}
-        />
-      </mesh>
+  // Clonamos la escena si vas a renderizar múltiples chinches/pins en pantalla
+  const clonedScene = scene.clone();
+
+  return (
+    <group position={position} rotation={rotation} scale={scale}>
+      <primitive object={clonedScene} castShadow receiveShadow />
     </group>
   );
 };
+
+// Precarga el modelo 3D para evitar parpadeos al montarse
+useGLTF.preload(boardPinModel);
 
 export default BoardPin;

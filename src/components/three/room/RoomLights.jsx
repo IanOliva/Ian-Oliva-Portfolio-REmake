@@ -9,15 +9,13 @@ const RoomLights = () => {
 
     const time = performance.now() * 0.001;
 
-    redLightRef.current.intensity =
-      0.25 + Math.sin(time * 2) * 0.02;
+    redLightRef.current.intensity = 0.25 + Math.sin(time * 2) * 0.02;
   });
 
   return (
     <>
       {/* Iluminación ambiental */}
       <ambientLight intensity={0.3} />
-
 
       {/* Luz frontal suave */}
       <pointLight
@@ -27,7 +25,18 @@ const RoomLights = () => {
         decay={2}
       />
 
-      
+      <spotLight
+        position={[3.5, 4.5, -1]}
+        intensity={8}
+        distance={8}
+        angle={0.45}
+        penumbra={0.6}
+        decay={2}
+        color="#fff4df"
+        castShadow
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+      />
     </>
   );
 };

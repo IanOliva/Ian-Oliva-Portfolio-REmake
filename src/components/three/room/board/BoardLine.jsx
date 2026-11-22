@@ -1,46 +1,32 @@
 import * as THREE from "three";
 import { useMemo } from "react";
+import { QuadraticBezierLine } from "@react-three/drei";
 
 const BoardLine = ({
   start = [0, 0, 0],
   end = [1, 1, 0],
-  color = "#8b0000",
+  color = "#4f1212",
   curve = 0.15,
 }) => {
-  const geometry = useMemo(() => {
+  // Calculamos el punto de control para la curva bezier
+  const mid = useMemo(() => {
     const startVector = new THREE.Vector3(...start);
     const endVector = new THREE.Vector3(...end);
-
-    // Punto intermedio para generar una ligera curvatura
     const middle = startVector.clone().lerp(endVector, 0.5);
-
-    // Desplazamiento perpendicular
     middle.x += curve;
-
-    const curvePath = new THREE.QuadraticBezierCurve3(
-      startVector,
-      middle,
-      endVector
-    );
-
-    return new THREE.TubeGeometry(
-      curvePath,
-      20,
-      0.018,
-      6,
-      false
-    );
+    return [middle.x, middle.y, middle.z];
   }, [start, end, curve]);
 
   return (
-    <mesh geometry={geometry}>
-      <meshStandardMaterial
-        color={color}
-        emissive={color}
-        emissiveIntensity={0.4}
-        roughness={0.8}
-      />
-    </mesh>
+    <QuadraticBezierLine
+      start={start}
+      end={end}
+      mid={mid}
+      color={color}
+      lineWidth={4} // Controla el grosor visual en píxeles/unidades
+      transparent={true}
+      opacity={0.85} // Simula la ligera transparencia de la tinta roja
+    />
   );
 };
 
